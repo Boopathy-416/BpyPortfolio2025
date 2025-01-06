@@ -1,0 +1,70 @@
+import React, { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap } from "gsap";
+
+// Import GSAP Plugins
+gsap.registerPlugin(ScrollTrigger);
+
+const Skills = () => {
+  const projectContainer = useRef(null);
+
+  useEffect(() => {
+    const container = projectContainer.current;
+
+
+
+    let skewSetter = gsap.quickTo(".project-img", "skewY"),
+      clamp = gsap.utils.clamp(-20, 20);
+
+    gsap.utils.toArray(".project-img").forEach((img) => {
+      ScrollTrigger.create({
+        trigger: img,
+        start: "top 80%",
+        end: "bottom 20%",
+        scrub: true,
+        onUpdate: (self) => {
+          const velocity = self.getVelocity();
+          skewSetter(clamp(velocity / -50));
+        },
+        onLeave: () => skewSetter(0),
+        onEnterBack: () => skewSetter(0),
+      });
+    });
+  }, []);
+
+  const projects = [
+    { id: 1, title: "Project 1", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 2, title: "Project 2", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 3, title: "Project 3", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 4, title: "Project 4", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 5, title: "Project 5", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 6, title: "Project 6", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 7, title: "Project 7", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 8, title: "Project 8", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 9, title: "Project 9", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gif" },
+    { id: 10, title: "Project 10", imgSrc: "https://res.cloudinary.com/dprlidj0p/image/upload/v1734604760/preloader_v1rvjq.gifg" },
+  ];
+
+  return (
+    <section id="projects" ref={projectContainer}>
+      <h1 className="text">Scrolly Images</h1>
+      <h1 aria-hidden="true" className="text outline-text">Scrolly Images</h1>
+      <h1 aria-hidden="true" className="text filter-text">Scrolly Images</h1>
+      <div className="projects-container">
+        {projects.map((project) => (
+          <div key={project.id} className="project-item">
+            <img
+              src={project.imgSrc}
+              alt={project.title}
+              className="project-img"
+            />
+            <h3>{project.title}</h3>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Skills;
+
