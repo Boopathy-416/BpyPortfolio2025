@@ -3,7 +3,7 @@ import Scene from "../functionality/ThreeDModel";
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-black p-5 lg:px-20 md:px-20">
-      <div className="container mx-auto px-4 py-12 md:py-24">
+      <div className="container mx-auto px-6 py-12 md:py-24  ">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Left Column - Content */}
           <div className="space-y-6">
@@ -13,16 +13,16 @@ export default function Portfolio() {
                 fontFamily: "objectsans",
               }}
             >
-              About Me
+              Who I Am 
             </h1>
             <div
               className="space-y-4 text-[#d5d5d5] "
               style={{
-                fontFamily: "Marvel",
+                fontFamily: "Marlboro",
               }}
             >
               <p
-                className="text-4xl first-line:uppercase first-line:tracking-widest
+                className="text-4xl first-line:uppercase first-line:tracking-wider
                 first-letter:text-7xl first-letter:font-bold first-letter:text-[#d5d5d5]
                 first-letter:mr-3 first-letter:float-left  "
               >
@@ -32,8 +32,11 @@ export default function Portfolio() {
                 a love for clean, modern design, I transform ideas into
                 intuitive, responsive interfaces.
               </p>
-              <hr />
-              <p className="text-2xl ">
+          
+              <p className="text-4xl  "
+              style={{
+                fontFamily:"Marlboro"
+              }}>
                 Although I began my journey as a B.E. Mechanical Engineer, my
                 passion for coding and design led me to transition into the
                 world of web development. Driven by creativity and a
@@ -41,8 +44,8 @@ export default function Portfolio() {
                 responsive web applications that blend aesthetics with
                 functionality.
               </p>
-              <hr />
-              <p
+         
+              {/* <p
                 style={{
                   backgroundImage:
                     "url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdkN2JlcGswZWw1bGZydm9xMGhuYWh0Mnp4MHVhMGZjbnVlNzZyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2Je3ktsieOfOGa1G/giphy.webp')",
@@ -51,14 +54,14 @@ export default function Portfolio() {
                 className="text-slate-500 leading-7 mt-2 text-2xl"
               >
                 Leveraging technologies like{" "}
-                <mark className="bg-[#d5d5d5]">
+                <mark className="bg-[#602121]">
                   React.js, JavaScript, and Tailwind CSS,
                 </mark>{" "}
                 I create sleek, user-friendly interfaces that deliver seamless
                 experiences. My engineering background equips me with analytical
                 thinking and a structured approach to tackling complex
                 challenges in web development.
-              </p>
+              </p> */}
             </div>
             <div
               class="group flex items-center"
@@ -71,16 +74,16 @@ export default function Portfolio() {
                 src="https://media.giphy.com/media/wNjw8sSZpA6EjNjFCG/giphy.gif?cid=ecf05e4738ey6m54dv2v2ub8b2hn3nftr2zxpsrthrfnbtqv&ep=v1_gifs_search&rid=giphy.gif&ct=g"
                 alt=""
               />
-              <div class="ltr:ml-3 rtl:mr-3">
-                <p class="text-3xl font-medium text-slate-300 group-hover:text-white">
+              <div class="ltr:ml-3 p-4 rtl:mr-3">
+                {/* <p class="text-3xl font-medium text-slate-300 group-hover:text-white">
                 
                 </p>
                 <p class="text-sm font-medium text-slate-500 group-hover:text-slate-300">
                  
-                </p>
+                </p> */}
             <button
               style={{
-                fontFamily: "kungfu",
+                fontFamily: "objectsans",
                 textAlign:"center",
                 transition: " ease-in 1s",
                 letterSpacing: "0.04em",
@@ -94,7 +97,7 @@ export default function Portfolio() {
           </div>
 
           {/* Right Column - Image */}
-          <div className="relative">
+          <div className="relative ">
          <Scene />
           </div>
         </div>

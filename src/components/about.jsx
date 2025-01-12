@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function About() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const items = ["Logofolio", "Branding", "Social Media", "Logo Motion"];
+  const items = ["UI/UX", "Branding", "Web development", "Logo Motion"];
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -63,7 +63,7 @@ function About() {
                 backgroundColor:
                   "rgba(0, 0, 0, 0.5)" /* Optional: adds a semi-transparent background for text */,
                 padding: "11rem" /* Optional: adds spacing inside the text */,
-                backgroundImage: "url('/public/assets/IMG_4511.JPG')",
+                backgroundImage: "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
                 fontFamily: "objectsans",
                 opacity: "0.7",
               }}
@@ -101,12 +101,12 @@ function About() {
 
           {/* Navigation links */}
           <div className="flex flex-wrap justify-center gap-4 mt-12">
-            {["Logofolio", "Branding", "Social Media", "Logo Motion"].map(
+            {["UI/UX Design", "Branding", "Portfolio", "Logo Motion"].map(
               (item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="inline-flex items-center gap-2 px-4 py-2 border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
+                  className="inline-flex items-center gap-2 px-4 py-3 border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
                     fontFamily:"Akira",
                     transition: " ease-in 0.4s",
                   }}

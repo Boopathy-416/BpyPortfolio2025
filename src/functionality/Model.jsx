@@ -1,24 +1,4 @@
-// // Model.jsx
-// import React, { useRef } from "react";
-// import { useGLTF } from "@react-three/drei";
 
-// /**
-//  * 
-//  * @param {string} props.url - The URL/path to your GLB file
-//  */
-// export default function Model({ url, ...props }) {
-//   const groupRef = useRef();
-//   // This hook automatically uses GLTFLoader to load your model
-//   const { scene } = useGLTF(url);
-
-//   return (
-//     <group ref={groupRef} {...props}>
-//       <primitive object={scene} />
-//     </group>
-//   );
-// }
-
-// Model.jsx
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";

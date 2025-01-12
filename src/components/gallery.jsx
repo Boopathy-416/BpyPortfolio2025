@@ -82,14 +82,14 @@ export default function Gallery() {
           letterSpacing: "0.6em",
         }}
       >
-        <h1 className="md:text-[200px] p-5 border-3 md:mt-10 text-2xl font-bold text-[#e9e9e9] text-center">
+        <h1 className="md:text-[200px] p-5 hover:bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTN5dXhlZWJtY29uOHgwaW9oOTNycnBiM3F1eW45Mmx3b3E1bGM2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpFFhlNiBoZJWhdskD/giphy.webp')] border-3 md:mt-10 text-2xl font-bold text-[#e9e9e9] text-center">
           GALLERY{" "}
           <span className="text-sm text-gray-700 tracking-wide">
             Work Experience
           </span>
         </h1>
         <h2
-          className="md:text-xl text-center border-1 border text-sm hover:bg-[#e9e9e9] hover:text-[#000] transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-gray-400"
+          className="md:text-xl text-center border-1 border text-sm hover:bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTN5dXhlZWJtY29uOHgwaW9oOTNycnBiM3F1eW45Mmx3b3E1bGM2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpFFhlNiBoZJWhdskD/giphy.webp')] hover:text-[#000] transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-gray-400"
           style={{
             opacity: "0.8",
             letterSpacing: "0.1em",

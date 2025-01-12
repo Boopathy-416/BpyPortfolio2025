@@ -21,18 +21,18 @@ function App() {
         <div id="portfolio">
           <Portfolio />
         </div>
-        {/* <div id="services">
-          <Services />
-        </div> */}
+        <div id="testimonals">
+          <Testimonials />
+        </div>
         <div id="gallery">
           <Gallery />
+        </div>
+        <div id="services">
+          <Services />
         </div>
         <div id="skills">
           <Skills />
         </div> 
-        <div id="testimonals">
-          <Testimonials />
-        </div>
         <Routes>
          {/* <Route path="/" element={<ContactForm />} /> */}
           <Route path="/terms" element={<div>Terms & Conditions</div>} />
