@@ -9,7 +9,7 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-end px-4 py-3">
         <Link
           to="/#contact"
-          
+ z         
           className=" hidden golden-btn relative overflow lg:block "
         >
           
