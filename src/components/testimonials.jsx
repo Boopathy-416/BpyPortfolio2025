@@ -100,7 +100,7 @@ export default function Testimonials() {
     return (
       <div
         ref={cardRef}
-        className="relative flex-shrink-0 w-[300px] h-[400px] bg-black rounded-lg overflow-hidden  cursor-pointer"
+        className="relative flex-shrink-0 w-[250px] h-[300px] bg-black rounded-lg overflow-hidden  cursor-pointer"
         onClick={() => window.open(project.link, "_blank")}
       >
         <img

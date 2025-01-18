@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import ContactForm from "./components/footer.jsx";
-import Navbar from "./components/Navbar.jsx";
-import About from "./components/about.jsx";
-import Portfolio from "./components/portfolio.jsx";
-import Services from "./components/services.jsx";
+import Navbar from "./components/navbar.jsx";
 import Skills from "./components/skills.jsx";
 import ScrollIndicator from "./functionality/ScrollIndicator.jsx"
 import Testimonials from "./components/testimonials.jsx";
 import Gallery from "./components/gallery.jsx";
+import Footer from "./components/footer.jsx";
+import About from "./components/about.jsx";
+import Hero from "./components/Hero.jsx";
+import Services from "./components/services.jsx";
 
 function App() {
   return (
@@ -16,10 +16,10 @@ function App() {
         <Navbar />
         <ScrollIndicator />
         <div id="about">
-          <About />
+          <Hero />
         </div>
         <div id="portfolio">
-          <Portfolio />
+          <About />
         </div>
         <div id="testimonals">
           <Testimonials />
@@ -32,6 +32,9 @@ function App() {
         </div> */}
         <div id="skills">
           <Skills />
+        </div> 
+        <div id="footer">
+          <Footer />
         </div> 
         <Routes>
          {/* <Route path="/" element={<ContactForm />} /> */}

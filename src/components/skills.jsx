@@ -1,205 +1,114 @@
-import React, { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import confetti from 'canvas-confetti'
-import { Link } from 'react-router-dom'
-import { Twitter, Youtube, Instagram } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
 
-gsap.registerPlugin(ScrollTrigger)
+const skills = [
+  { name: 'React', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
+  { name: 'Node.js', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
+  { name: 'Tailwind', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
+  { name: 'Figma', icon: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
+  { name: 'GraphQL', icon: ' https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg' },
+  { name: 'MongoDB', icon: 'https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png' },
+  { name: 'Java', icon: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
+  { name: 'Git', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg' },
+  { name: 'CSS', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg' },
+  { name: 'HTML', icon: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg' },
+  { name: 'JavaScript', icon: ' https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png' },
+];
 
 export default function Skills() {
-  const sectionRef = useRef(null)
-  const audioRef = useRef(null)
-  const textRef = useRef(null)
-  const buttonRef = useRef(null)
-  
+  const containerRef = useRef(null);
+  const wheelRef = useRef(null);
+  const [rotation, setRotation] = useState(0);
+
   useEffect(() => {
-    if (!sectionRef.current || !textRef.current || !buttonRef.current) return
-    
-    const text = "Discover\n what a website \n can truly - achieve!"
-    const lines = text.split('\n')
-    
-    // Clear existing content and create animated spans
-    textRef.current.innerHTML = lines
-      .map(line => {
-        return `
-          <div class="overflow-hidden">
-            <div class="line pointer-events-none">
-              ${Array.from(line)
-                .map(char => `<span class="inline-block   opacity-0">${char}</span>`)
-                .join('')}
-            </div>
-          </div>
-        `
-      })
-      .join('')
-    
-    const chars = textRef.current.querySelectorAll('span')
-    
-    // Hide button initially
-    gsap.set(buttonRef.current, { opacity: 0, y: 20 })
-    
+    if (!wheelRef.current) return;
+
+    const wheel = wheelRef.current;
+    const itemCount = skills.length;
+    const angleStep = 360 / itemCount;
+
+    skills.forEach((_, index) => {
+      const item = wheel.children[index];
+      const angle = angleStep * index;
+      const radius = 200;
+
+      gsap.set(item, {
+        x: Math.cos((angle * Math.PI) / 180) * radius,
+        y: Math.sin((angle * Math.PI) / 180) * radius,
+        rotation: angle,
+      });
+    });
+
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: sectionRef.current,
+        trigger: containerRef.current,
         start: 'top center',
         end: 'bottom center',
-        toggleActions: 'play reverse play reverse'
-      }
-    })
-    
-    // Animate each character
-    tl.to(chars, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.8,
-      ease: 'back.out(1.7)',
-      stagger: {
-        amount: 1.5,
-        from: 'start'
-      }
-    })
-    // Reveal button after text animation
-    .to(buttonRef.current, {
-      opacity: 1,
-      y: 0,
-      duration: 0.6,
-      ease: 'back.out'
-    })
-  }, [])
+        scrub: 1,
+        onUpdate: (self) => {
+          const currentRotation = (self.progress * 360) % 360;
+          setRotation(currentRotation);
+        },
+      },
+    });
 
-  const handleClick = () => {
-    if (!buttonRef.current || !audioRef.current) return
-    
-    // Play sound effect
-    audioRef.current.currentTime = 0
-    audioRef.current.play()
-    
-    // Button burst animation
-    gsap.to(buttonRef.current, {
-      scale: 1.2,
-      duration: 0.1,
-      ease: 'power2.out',
-      yoyo: true,
-      repeat: 1
-    })
-    
-    // Confetti burst effect
-    const rect = buttonRef.current.getBoundingClientRect()
-    const x = (rect.left + rect.right) / 2 / window.innerWidth
-    const y = (rect.top + rect.bottom) / 2 / window.innerHeight
-    
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { x, y },
-      colors: ['#FFD700', '#FFA500', '#FF4500']
-    })
-  }
+    tl.to(wheel, {
+      rotation: 360,
+      duration: 1,
+      ease: 'none',
+    });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+// const backgroundImageUrl = '/assets/fit gif.gif';
 
   return (
-    <section 
-      
-      className=" bg-[#000] "
+    <div 
+      ref={containerRef} 
+      className="relative h-[50vh] text-white border-t-[0px] shadow-[0_10px_50px_rgba(255,255,255,0.5)]  bg-black overflow-hidden"
+      style={{
+        // backgroundImage: 'url("/assets/fit gif.gif")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+      }}
     >
-      <div
-      ref={sectionRef}
-       className="container min-h-screen flex flex-col items-center justify-center p-4 ">
-      <div 
-        ref={textRef}
-        className="text-black transition-all hover:tracking-tighter bg-[#ececec] hover:bg-black hover:rounded-[100%] hover:py-[10%] hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-5 md:p-10 rounded-xl  text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-12 text-center"
-        style={{
-          transition: " ease-in 1s",
-          fontFamily:"objectsans"
-        }}
-      />
       
-      <button
-        ref={buttonRef}
-        onClick={handleClick}
-        className="relative px-8 py-3 transition-all  text-lg font-medium text-white bg-black rounded-md 
-                   overflow-hidden transition-transform hover:tracking-widest hover:scale-105 active:scale-95"
-                   style={{
-                    transition: " ease-in 0.4s",
-                     fontFamily:"objectsans"
-                  }} >
-        <span className="relative z-10 leading-loose font-bold ">GET IN TOUCH</span>
-        <div className="absolute inset-0  bg-gradient-to-r from-white/40  via-black/20 to-white/20 
-                        animate-[shine_2s_infinite]" 
-        />
-      </button>
-
-      <audio
-        ref={audioRef}
-        src="/assets/audio/pop.wav"
-        preload="auto"
-      />
-   </div>
-    
-        <div className="container flex h-14 items-center justify-between bg-[url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNzdqbm42ZmFka3FpNTd1Y2NyNTN0N3gxYjI0dzk2czdpemszYjU2ZSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3q3SUqPnxZGQpMNcjc/giphy.gif')] bg-cover px-4 md:px-6"
+      <div className="sticky top-0 h-screen flex items-center justify-center">
+        <div 
+          ref={wheelRef}
+          className="relative w-[600px] h-[800px]"
+          style={{
+            transform: `rotate(${rotation}deg)`,
+          }}
+        >
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="absolute w-60 h-60 rounded-full bg-white/30 backdrop-blur-sm
+                        flex items-center justify-center text-6xl transform -translate-x-8 -translate-y-8
+                        border-2 border-white/0.5 hover:border-white/50 transition-colors
+                        cursor-pointer"
+              style={{
+                transformOrigin: '50% 50%',
+              }}
+            >
+              <img src={skill.icon} alt={skill.name} className="w-20 h-20" />
+            </div>
+          ))}
+        </div>
+        <h1 className='text-2xl md:text-6xl text-center p-2 mb-40 justify-center overflow-hidden  hover:bg-white hover:text-black hover:tracking-tighter hover:px-5 hover:rounded-6xl transition-all '
         style={{
           fontFamily:"objectsans",
-          letterSpacing:"0.06em"
-        }}>
-        {/* Logo */}
-        <Link href="#" className="flex items-center space-x-2">
-          <img 
-            src="/assets/icon.png" 
-            alt="Bpy Logo" 
-            width={100} 
-            className="h-auto w-[50px] md:w-[50px]"
-          />
-        </Link>
-
-        {/* Copyright Text */}
-        <p className="text-sm md:text-sm text-muted-foreground font-extrabold hidden sm:block">
-          Copyright © {new Date().getFullYear()}. All rights reserved - Made by BPY-Portfolio 
-        </p>
-        
-        {/* Mobile Copyright - Shows only on small screens */}
-        <p className="text-xs text-muted-foreground sm:hidden">
-          © {new Date().getFullYear()} BPY-Portfolio 
-        </p>
-
-        {/* Social Icons */}
-        <div className="flex items-center space-x-3 md:space-x-4">
-          <Link 
-            href="#" 
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Twitter"
-          >
-            <Twitter className="h-4 w-4 md:h-5 md:w-5" />
-          </Link>
-          <Link 
-            href="#" 
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="YouTube"
-          >
-            <Youtube className="h-4 w-4 md:h-5 md:w-5" />
-          </Link>
-          <Link 
-            href="#" 
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="Instagram"
-          >
-            <Instagram className="h-4 w-4 md:h-5 md:w-5" />
-          </Link>
-          <Link 
-            href="#" 
-            className="text-muted-foreground hover:text-foreground transition-colors"
-            aria-label="TikTok"
-          >
-            <svg 
-              viewBox="0 0 24 24" 
-              className="h-4 w-4 md:h-5 md:w-5 fill-current"
-            >
-              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
-            </svg>
-          </Link>
-        </div>
+          transition: " ease-in 0.9s",
+        }}>What I Bring to <br /> the Table</h1>
       </div>
-    </section>
-  )
+    </div>
+  );
 }

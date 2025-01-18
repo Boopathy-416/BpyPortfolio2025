@@ -46,7 +46,7 @@ export default function Skills() {
           key={section.id}
           href={`#${section.id}`}
           data-section={section.label}
-          className={`relative w-5 h-5 rounded-full transition-transform duration-300 group ${
+          className={`relative w-2 h-2 rounded-full transition-transform duration-300 group ${
             activeSection === section.id ? "bg-white scale-125" : "bg-gray-500"
           }`}
         >

@@ -1,151 +1,107 @@
-import React, { useEffect, useState } from "react";
+import Scene from "../functionality/ThreeDModel";
 
-function About() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const items = ["UI/UX", "Branding", "Web development", "Logo Motion"];
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
+export default function About() {
   return (
-    <section id="about">
-      <div className="relative min-h-screen w-full overflow-hidden bg-[#000]">
-        {/* Particle effect */}
-        <div className="absolute inset-0 opacity-30">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute h-0.5 w-0.5 rounded-full bg-white"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animation: `twinkle ${Math.random() * 5 + 3}s infinite`,
-              }}
-            />
-          ))}
-        </div>
-
-        {/* Spotlight effect */}
-        <div
-          className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-gradient-radial from-[#ffffff10] to-transparent opacity-20"
-          style={{
-            transform: `translate(
-              calc(-50% + ${(mousePosition.x - 0.5) * 100}px),
-              calc(-50% + ${(mousePosition.y - 0.5) * 100}px)
-            )`,
-          }}
-        />
-        <div className="text-start ml-9 mb-6 mt-5">
-          <span className="inline-block px-4 py-1 border border-[#ececec] text-[#ececec] rounded-full text-sm">
-            2024-25
-          </span>
-        </div>
-
-        {/* Portfolio heading with glow effect */}
-
-        {/* Main content */}
-        <main className="relative flex min-h-screen flex-col items-center justify-center px-4">
-          {/* Bottom badges */}
-          <div className="relative  ">
+    <div className="min-h-screen bg-black p-5 lg:px-20 md:px-20">
+      <div className="container mx-auto px-6 py-12 md:py-24  ">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          {/* Left Column - Content */}
+          <div className="space-y-6">
             <h1
-              className="text-[clamp(3rem,15vw,8rem)] np bg-no-repeat leading-none font-black text-center"
+              className="text-5xl md:text-6xl font-bold text-white leading-tight"
               style={{
-                color: "#ebebeb",
-                backgroundColor:
-                  "rgba(0, 0, 0, 0.5)" /* Optional: adds a semi-transparent background for text */,
-                padding: "11rem" /* Optional: adds spacing inside the text */,
-                backgroundImage: "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
                 fontFamily: "objectsans",
-                opacity: "0.7",
               }}
             >
-              Portfolio
+              Who I Am 
             </h1>
-            {/* Green glow effect */}
             <div
-              className="absolute -right-1 top-0 w-24 h-24 bg-[#ececec] blur-[100px] opacity-90"
+              className="space-y-4 text-[#d5d5d5] "
               style={{
-                backgroundImage: "url('/public/assets/div.png')",
+                fontFamily: "Marlboro",
               }}
-            ></div>
-
-            {/* Creative Designer text */}
-            <div className="absolute -right-2 top-0 w-32 h-32">
-              <svg
-                viewBox="0 0 100 100"
-                className="w-full h-full rotate-[30deg]"
+            >
+              <p
+                className="text-4xl first-line:uppercase first-line:tracking-wider
+                first-letter:text-7xl first-letter:font-bold first-letter:text-[#d5d5d5]
+                first-letter:mr-3 first-letter:float-left  "
               >
-                <path
-                  id="curve"
-                  d="M 25,50 a 25,25 0 1,1 50,0 a 25,25 0 1,1 -50,0"
-                  fill="none"
-                  className="text-[#ececec]"
-                />
-                <text className="text-[8px]">
-                  <textPath href="#curve" startOffset="0%">
-                    CREATIVE DESIGNER
-                  </textPath>
-                </text>
-              </svg>
+                I’m a passionate <mark> Frontend Developer</mark>
+                and UI/UX Designer dedicated to crafting visually stunning and
+                user-centric digital experiences. With a keen eye for detail and
+                a love for clean, modern design, I transform ideas into
+                intuitive, responsive interfaces.
+              </p>
+          
+              <p className="text-4xl  "
+              style={{
+                fontFamily:"Marlboro"
+              }}>
+                Although I began my journey as a B.E. Mechanical Engineer, my
+                passion for coding and design led me to transition into the
+                world of web development. Driven by creativity and a
+                problem-solving mindset, I now specialize in building scalable,
+                responsive web applications that blend aesthetics with
+                functionality.
+              </p>
+         
+              {/* <p
+                style={{
+                  backgroundImage:
+                    "url('https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXdkN2JlcGswZWw1bGZydm9xMGhuYWh0Mnp4MHVhMGZjbnVlNzZyYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l2Je3ktsieOfOGa1G/giphy.webp')",
+                  letterSpacing: "0.04em",
+                }}
+                className="text-slate-500 leading-7 mt-2 text-2xl"
+              >
+                Leveraging technologies like{" "}
+                <mark className="bg-[#602121]">
+                  React.js, JavaScript, and Tailwind CSS,
+                </mark>{" "}
+                I create sleek, user-friendly interfaces that deliver seamless
+                experiences. My engineering background equips me with analytical
+                thinking and a structured approach to tackling complex
+                challenges in web development.
+              </p> */}
+            </div>
+            <div
+              class="group flex items-center"
+              style={{
+                fontFamily: "objectsans",
+              }}
+            >
+              <img
+                class="shrink-0 h-12 w-22 rounded-full"
+                src="https://media.giphy.com/media/wNjw8sSZpA6EjNjFCG/giphy.gif?cid=ecf05e4738ey6m54dv2v2ub8b2hn3nftr2zxpsrthrfnbtqv&ep=v1_gifs_search&rid=giphy.gif&ct=g"
+                alt=""
+              />
+              <div class="ltr:ml-3 p-4 rtl:mr-3">
+                {/* <p class="text-3xl font-medium text-slate-300 group-hover:text-white">
+                
+                </p>
+                <p class="text-sm font-medium text-slate-500 group-hover:text-slate-300">
+                 
+                </p> */}
+            <button
+              style={{
+                fontFamily: "objectsans",
+                textAlign:"center",
+                transition: " ease-in 1s",
+                letterSpacing: "0.04em",
+              }}
+              className="bg-black text-white px-8 py-3 transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] rounded-md hover:bg-gray-800 hover:text-[#d2fb51] hover:scale-75 translate-x-4  transition-colors"
+            >
+              Let’s connect
+            </button>
+              </div>
             </div>
           </div>
 
-          {/* Navigation links */}
-          <div className="flex flex-wrap justify-center gap-4 mt-12">
-            {["UI/UX Design", "Branding", "Portfolio", "Logo Motion"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="inline-flex items-center gap-2 px-4 py-3 border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
-                    fontFamily:"Akira",
-                    transition: " ease-in 0.4s",
-                  }}
-                >
-                  <span className="transform rotate-45">↑</span>
-                  {item}
-                </a>
-              )
-            )}
+          {/* Right Column - Image */}
+          <div className="relative ">
+         <Scene />
           </div>
-          
-
-          <div className="absolute bottom-25 transition-all right-10 hidden md:block  max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
-          style={{
-            transition: " ease-in 1s",
-          }}>
-            <h2 className="text-xl font-bold">
-              Open to work Web Developer, Javascript Developer, Freelance,
-              Frontend Developer and Development Specialist roles ..
-            </h2>
-            <p className="mt-2 text-sm  hover:text-white/80">7.1.2024 last Updated</p>
-          </div>
-        </main>
-
-        {/* Global styles for animation */}
-        <style jsx global>{`
-          @keyframes twinkle {
-            0%,
-            100% {
-              opacity: 0;
-            }
-            50% {
-              opacity: 1;
-            }
-          }
-        `}</style>
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
-
-export default About;

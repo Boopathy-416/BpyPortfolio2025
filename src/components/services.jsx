@@ -22,7 +22,7 @@ export default function Services() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   return (
-    <section className="relative min-h-screen bg-[#0a0b0d] text-white overflow-hidden">
+    <section className="relative min-h-screen bg-[#000000] text-white overflow-hidden">
       {/* Logo */}
       <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
@@ -94,7 +94,7 @@ export default function Services() {
       </div>
       {/* Portfolio Text */}
 
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 -rotate-90 origin-right">
+      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 -rotate-90 origin-right">
         <span className="text-sm tracking-widest uppercase">
           BPY _ Creation Portfolio 2025
         </span>
