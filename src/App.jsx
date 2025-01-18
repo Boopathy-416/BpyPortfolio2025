@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar.jsx";
 import Skills from "./components/skills.jsx";
 import ScrollIndicator from "./functionality/ScrollIndicator.jsx"
 import Testimonials from "./components/testimonials.jsx";
@@ -9,11 +8,13 @@ import About from "./components/about.jsx";
 import Hero from "./components/Hero.jsx";
 import Services from "./components/services.jsx";
 
+
+
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
+    
         <ScrollIndicator />
         <div id="about">
           <Hero />
