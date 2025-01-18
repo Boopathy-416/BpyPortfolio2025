@@ -131,18 +131,20 @@ function Hero() {
           </div>
         </main>
 
-        {/* Global styles for animation */}
-        <style jsx global>{`
-          @keyframes twinkle {
-            0%,
-            100% {
-              opacity: 0;
-            }
-            50% {
-              opacity: 1;
-            }
-          }
-        `}</style>
+        <style>{`
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+`}</style>
+
+
+
       </div>
     </section>
   );

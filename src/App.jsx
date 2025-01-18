@@ -36,12 +36,12 @@ function App() {
         <div id="footer">
           <Footer />
         </div> 
-        <Routes>
-         {/* <Route path="/" element={<ContactForm />} /> */}
+        {/* <Routes>
+         <Route path="/" element={<ContactForm />} />
           <Route path="/terms" element={<div>Terms & Conditions</div>} />
           <Route path="/privacy" element={<div>Privacy Policy</div>} />
           <Route path="/cookie-policy" element={<div>Cookie Policy</div>} /> 
-        </Routes>
+        </Routes> */}
       </Router>
     </>
   );

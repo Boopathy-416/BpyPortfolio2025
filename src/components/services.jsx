@@ -21,6 +21,7 @@ export default function Services() {
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
+  
   return (
     <section className="relative min-h-screen bg-[#000000] text-white overflow-hidden">
       {/* Logo */}
