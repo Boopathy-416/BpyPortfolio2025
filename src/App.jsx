@@ -1,20 +1,19 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Skills from "./components/skills.jsx";
-import ScrollIndicator from "./functionality/ScrollIndicator.jsx"
+import ScrollIndicator from "./functionality/ScrollIndicator.jsx";
 import Testimonials from "./components/testimonials.jsx";
 import Gallery from "./components/gallery.jsx";
 import Footer from "./components/footer.jsx";
 import About from "./components/about.jsx";
-import Hero from "./components/Hero.jsx";
+import Hero from "./components/hero.jsx";
 import Services from "./components/services.jsx";
-
-
+import Navbar from "./components/nav.jsx";
 
 function App() {
   return (
     <>
       <Router>
-    
+        <Navbar />
         <ScrollIndicator />
         <div id="about">
           <Hero />
@@ -33,10 +32,10 @@ function App() {
         </div> */}
         <div id="skills">
           <Skills />
-        </div> 
+        </div>
         <div id="footer">
           <Footer />
-        </div> 
+        </div>
         {/* <Routes>
          <Route path="/" element={<ContactForm />} />
           <Route path="/terms" element={<div>Terms & Conditions</div>} />
