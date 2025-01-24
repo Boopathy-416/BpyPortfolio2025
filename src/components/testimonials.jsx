@@ -148,7 +148,8 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="md:px-20 px-4 bg-black ">
+    <section className="md:px-20 px-4 bg-black"
+>
       <div
         id="Testimonials"
         ref={containerRef}
@@ -176,16 +177,17 @@ export default function Testimonials() {
             WEB 3
           </h2>
         </div>
-        <div className="container mx-auto   px-4 py-20">
-          <div
-            ref={sliderRef}
-            className="inline-flex gap-8 px-4 whitespace-nowrap "
-          >
-            {repeatedProjects.map((project, index) => (
-              <ProjectCard key={index} project={project} />
-            ))}
-          </div>
-        </div>
+   <div className="container mx-auto px-4 py-20 relative">
+  <div 
+    ref={sliderRef}
+    className="inline-flex gap-8 px-4 whitespace-nowrap relative"
+   
+  >
+    {repeatedProjects.map((project, index) => (
+      <ProjectCard key={index} project={project} />
+    ))}
+  </div>
+</div>
       </div>
     </section>
   );

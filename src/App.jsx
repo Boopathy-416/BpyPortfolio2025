@@ -24,14 +24,14 @@ function App() {
         <div id="testimonals">
           <Testimonials />
         </div>
-        <div id="gallery">
-          <Gallery />
-        </div>
-        {/* <div id="services">
+        <div id="services">
           <Services />
-        </div> */}
+        </div>
         <div id="skills">
           <Skills />
+        </div>
+        <div id="gallery">
+          <Gallery />
         </div>
         <div id="footer">
           <Footer />

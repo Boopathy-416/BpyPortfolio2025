@@ -58,7 +58,7 @@ export default function Skills() {
     tl.to(wheel, {
       rotation: 360,
       duration: 1,
-      ease: 'none',
+      ease: 'ease-in',
     });
 
     return () => {
@@ -72,9 +72,9 @@ export default function Skills() {
     <section className=' md:px-20 bg-black ' > 
     <div 
       ref={containerRef} 
-      className="relative h-[100vh] text-white md:rounded-full overflow-hidden"
+      className="relative h-screen text-white  overflow-hidden"
       style={{
-        // backgroundImage: 'url("/assets/fit gif.gif")',
+        backgroundImage: 'url("/assets/fit gif.gif")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -84,7 +84,7 @@ export default function Skills() {
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div 
           ref={wheelRef}
-          className="relative w-[100px] h-[100px] md:w-[500px] md:h-[500px] "
+          className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px] "
           style={{
             transform: `rotate(${rotation}deg)`,
           }}
@@ -94,8 +94,8 @@ export default function Skills() {
               key={skill.name}
               className="absolute w-20 h-20 md:w-60 md:h-60 rounded-full bg-white/30 backdrop-blur-sm
                         flex items-center justify-center text-6xl transform -translate-x-8 -translate-y-8
-                        border-1 border-white/0.5 hover:border-white/50 transition-colors
-                        cursor-pointer"
+                        border-1 border-white/0.5 hover:border-white/50 pointer-events-none transition-colors
+                        "
               style={{
                 transformOrigin: '50% 50%',
               }}
@@ -104,13 +104,13 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        <h1 className='text-2xl md:text-6xl text-center p-2 md:mb-40 justify-center overflow-hidden   hover:text-black hover:tracking-tight hover:px-1 transition-all '
+        <h1 className='text-4xl md:text-7xl text-end p-2 md:mx-40 justify-end overflow-hidden  transition-all '
         style={{
           fontFamily:"objectsans",
           transition: " ease-in 0.9s",
-          letterSpacing:"0.20em",
-          lineHeight:"2",
-        }}>What  I Bring to the Table</h1>
+          // letterSpacing:"0.20em",
+          // lineHeight:"2",
+        }}>What  I Bring <br />to the Table</h1>
       </div>
     </div>
     </section>
