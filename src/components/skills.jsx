@@ -74,7 +74,7 @@ export default function Skills() {
       ref={containerRef} 
       className="relative h-screen text-white  overflow-hidden"
       style={{
-        backgroundImage: 'url("/assets/fit gif.gif")',
+        // backgroundImage: 'url("/assets/fit gif.gif")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -104,7 +104,7 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        <h1 className='text-4xl md:text-7xl text-end p-2 md:mx-40 justify-end overflow-hidden  transition-all '
+        <h1 className='text-4xl pointer-events-none md:text-7xl text-end p-2 md:mx-56 justify-end overflow-hidden  transition-all '
         style={{
           fontFamily:"objectsans",
           transition: " ease-in 0.9s",

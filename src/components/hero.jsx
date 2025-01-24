@@ -100,15 +100,15 @@ function Hero() {
           </div>
 
           {/* Navigation links */}
-          <div className="flex flex-wrap justify-center gap-4 mt-12">
+          <div className="flex flex-wrap hidden md:block  justify-center gap-20 mt-16">
             {["UI/UX Design", "Branding", "Portfolio", "Logo Motion"].map(
               (item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="inline-flex items-center gap-2 px-4 py-3 border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
+                  className="inline-flex items-center justify-center gap-2 md:text-md md:px-8 md:py-4  border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
                     fontFamily:"Akira",
-                    transition: " ease-in 0.4s",
+                    transition: " ease-out 0.6s",
                   }}
                 >
                   <span className="transform rotate-45">↑</span>
@@ -119,7 +119,7 @@ function Hero() {
           </div>
           
 
-          <div className="absolute bottom-25 transition-all right-10 hidden md:block  max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+          <div className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
           style={{
             transition: " ease-in 1s",
           }}>
