@@ -100,7 +100,7 @@ export default function Testimonials() {
     return (
       <div
         ref={cardRef}
-        className="relative flex-shrink-0 w-[250px] h-[300px] bg-black rounded-lg overflow-hidden  cursor-pointer"
+        className="relative  flex-shrink-0 w-[250px] h-[300px] bg-black rounded-lg overflow-hidden  cursor-pointer"
         onClick={() => window.open(project.link, "_blank")}
       >
         <img
@@ -148,14 +148,14 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section>
+    <section className="md:px-20 px-4 bg-black ">
       <div
         id="Testimonials"
         ref={containerRef}
         className="min-h-screen md:p-20 bg-[#000] relative overflow-hidden"
       >
         <div
-          className="md:text-center text-start"
+          className="md:text-center text-start "
           style={{
             fontFamily: "kungfu",
             letterSpacing: "0.6em",

@@ -69,9 +69,10 @@ export default function Skills() {
 // const backgroundImageUrl = '/assets/fit gif.gif';
 
   return (
+    <section className=' md:px-20 bg-black ' > 
     <div 
       ref={containerRef} 
-      className="relative h-[50vh] text-white border-t-[0px] shadow-[0_10px_50px_rgba(255,255,255,0.5)]  bg-black overflow-hidden"
+      className="relative h-[100vh] text-white md:rounded-full overflow-hidden"
       style={{
         // backgroundImage: 'url("/assets/fit gif.gif")',
         backgroundSize: 'cover',
@@ -83,7 +84,7 @@ export default function Skills() {
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div 
           ref={wheelRef}
-          className="relative w-[600px] h-[800px]"
+          className="relative w-[100px] h-[100px] md:w-[500px] md:h-[500px] "
           style={{
             transform: `rotate(${rotation}deg)`,
           }}
@@ -91,24 +92,27 @@ export default function Skills() {
           {skills.map((skill) => (
             <div
               key={skill.name}
-              className="absolute w-60 h-60 rounded-full bg-white/30 backdrop-blur-sm
+              className="absolute w-20 h-20 md:w-60 md:h-60 rounded-full bg-white/30 backdrop-blur-sm
                         flex items-center justify-center text-6xl transform -translate-x-8 -translate-y-8
-                        border-2 border-white/0.5 hover:border-white/50 transition-colors
+                        border-1 border-white/0.5 hover:border-white/50 transition-colors
                         cursor-pointer"
               style={{
                 transformOrigin: '50% 50%',
               }}
             >
-              <img src={skill.icon} alt={skill.name} className="w-20 h-20" />
+              <img src={skill.icon} alt={skill.name} className="md:w-20 md:h-20 w-10 h-10" />
             </div>
           ))}
         </div>
-        <h1 className='text-2xl md:text-6xl text-center p-2 mb-40 justify-center overflow-hidden  hover:bg-white hover:text-black hover:tracking-tighter hover:px-5 hover:rounded-6xl transition-all '
+        <h1 className='text-2xl md:text-6xl text-center p-2 md:mb-40 justify-center overflow-hidden   hover:text-black hover:tracking-tight hover:px-1 transition-all '
         style={{
           fontFamily:"objectsans",
           transition: " ease-in 0.9s",
-        }}>What I Bring to <br /> the Table</h1>
+          letterSpacing:"0.20em",
+          lineHeight:"2",
+        }}>What  I Bring to the Table</h1>
       </div>
     </div>
+    </section>
   );
 }
