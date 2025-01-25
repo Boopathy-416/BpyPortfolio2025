@@ -30,9 +30,9 @@ function App() {
         <div id="skills">
           <Skills />
         </div>
-        <div id="gallery">
+        {/* <div id="gallery">
           <Gallery />
-        </div>
+        </div> */}
         <div id="footer">
           <Footer />
         </div>

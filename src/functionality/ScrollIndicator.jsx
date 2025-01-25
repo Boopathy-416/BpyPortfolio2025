@@ -52,7 +52,7 @@ export default function Skills() {
         >
           <div className="absolute w-4 h-0 rounded-full bg-black top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-125 transition-transform"></div>
 
-          <span className="absolute left-6 top-1/2 -translate-y-1/2  shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-white font-bold text-sm p-3 rounded  opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <span className="absolute left-6 md:block hidden top-1/2 -translate-y-1/2  shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-white font-bold text-sm p-3 rounded  opacity-0 transition-opacity duration-300 group-hover:opacity-100">
             {section.label}
           </span>
         </a>

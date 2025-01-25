@@ -57,7 +57,7 @@ export default function Skills() {
 
     tl.to(wheel, {
       rotation: 360,
-      duration: 1,
+      duration: 0.6,
       ease: 'ease-in',
     });
 
@@ -74,7 +74,7 @@ export default function Skills() {
       ref={containerRef} 
       className="relative h-screen text-white  overflow-hidden"
       style={{
-        // backgroundImage: 'url("/assets/fit gif.gif")',
+        backgroundImage: 'url("/assets/fit gif.gif")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
@@ -104,14 +104,19 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        <h1 className='text-4xl pointer-events-none md:text-7xl text-end p-2 md:mx-56 justify-end overflow-hidden  transition-all '
+        <h1 className='text-4xl z-1  md:text-7xl text-end p-2 md:mx-56 justify-end overflow-hidden hover:tracking-tighter  hover:rounded-lg  transition-all '
         style={{
           fontFamily:"objectsans",
           transition: " ease-in 0.9s",
           // letterSpacing:"0.20em",
           // lineHeight:"2",
-        }}>What  I Bring <br />to the Table</h1>
+        }}>What  I Bring to<br /> the Table</h1>
+        {/* <img src="/assets/div.png" width="100px" height="200px"className='scrollLeft'   style={{
+            transform: `rotate(${rotation}deg)`,
+          }} /> */}
+          <br />
       </div>
+          
     </div>
     </section>
   );

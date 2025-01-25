@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Services() {
   const servicesRef = useRef([]);
   const services = [
-    { id: 1, name: "Front-end developer", image: "public/assets/rb_1155.png",  textColor: "text-yellow-100"  },
-    { id: 2, name: "UX/UI Designer", image: "public/assets/rb_8193.png",  textColor: "text-green-300" },
-    { id: 3, name: "video editor", image: "public/assets/vc.png", textColor: "text-pink-400" },
+    { id: 1, name: "Front-end developer", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818152/rb_1155_s5e4cw.png",  textColor: "text-yellow-100"  },
+    { id: 2, name: "UX/UI Designer", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818150/rb_8193_e1luos.png",  textColor: "text-green-300" },
+    { id: 3, name: "video editor", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818152/vc_u6klmt.png", textColor: "text-pink-400" },
   ];
 
   useEffect(() => {
@@ -76,10 +76,11 @@ export default function Services() {
         }}
       >
       
-        <h1 className="md:text-[40px] p-5  text-2xl font-bold text-[#e9e9e9] text-center">
+        <h1 className="md:text-[80px] p-5 my-4  text-2xl font-bold text-[#e9e9e9] text-center">
         Code {">"} Design {">"} Transform 
         
         </h1>
+        <hr className="  border-[#f0f0f050] border-[1.5px]" />
       </div>
 
 
@@ -108,6 +109,7 @@ export default function Services() {
               >
                 {service.name}
               </h2>
+              <hr className="  border-[#f0f0f050] border-[1.5px]" />
             </div>
             <div
               className={`relative aspect-[2/3] ${
@@ -117,7 +119,7 @@ export default function Services() {
               <img
                 src={service.image}
                 alt={`${service.name} service illustration`}
-                className="object-cover   rounded-lg w-[350px] h-auto "
+                className="object-cover  rounded-lg w-[350px] h-auto "
               />
             </div>
           </div>
