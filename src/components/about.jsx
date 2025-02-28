@@ -22,7 +22,7 @@ export default function About() {
               }}
             >
               <p
-                className="text-4xl first-line:uppercase first-line:tracking-wider
+                className="text-xl first-line:uppercase first-line:tracking-wider
                 first-letter:text-7xl first-letter:font-bold first-letter:text-[#d5d5d5]
                 first-letter:mr-3 first-letter:float-left  "
               >
@@ -33,7 +33,7 @@ export default function About() {
                 intuitive, responsive interfaces.
               </p>
           
-              <p className="text-4xl  "
+              <p className="text-xl "
               style={{
                 fontFamily:"Marlboro"
               }}>
@@ -69,11 +69,11 @@ export default function About() {
                 fontFamily: "objectsans",
               }}
             >
-              <img
+              {/* <img
                 class="shrink-0 h-12 w-22 rounded-full"
                 src="https://media.giphy.com/media/wNjw8sSZpA6EjNjFCG/giphy.gif?cid=ecf05e4738ey6m54dv2v2ub8b2hn3nftr2zxpsrthrfnbtqv&ep=v1_gifs_search&rid=giphy.gif&ct=g"
                 alt=""
-              />
+              /> */}
               <div class="ltr:ml-3 p-4 rtl:mr-3">
                 {/* <p class="text-3xl font-medium text-slate-300 group-hover:text-white">
                 
@@ -88,7 +88,7 @@ export default function About() {
                 transition: " ease-in 1s",
                 letterSpacing: "0.04em",
               }}
-              className="bg-black text-white px-8 py-3 transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] rounded-md hover:bg-gray-800 hover:text-[#d2fb51] hover:scale-75 translate-x-4  transition-colors"
+              className="bg-black text-white px-8 py-3 transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] rounded-md hover:bg-gray-800 hover:text-[#d2fb51] hover:translate-x-4  transition-colors"
             >
               Let’s connect
             </button>

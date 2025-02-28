@@ -44,11 +44,11 @@ function Hero() {
             )`,
           }}
         />
-        <div className="text-start ml-9 mb-6 mt-5">
+        {/* <div className="text-start ml-9 mb-6 mt-5">
           <span className="inline-block px-4 py-1 border border-[#ececec] text-[#ececec] rounded-full text-sm">
             2024-25
           </span>
-        </div>
+        </div> */}
 
         {/* Portfolio heading with glow effect */}
 
@@ -100,13 +100,14 @@ function Hero() {
           </div>
 
           {/* Navigation links */}
-          <div className="flex flex-wrap hidden md:block  justify-center gap-20 mt-16">
+          <div className="flex flex-wrap hidden md:block  justify-center z-20 gap-20  -mt-20">
             {["UI/UX Design", "Branding", "Portfolio", "Logo Motion"].map(
               (item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="inline-flex items-center justify-center gap-2 md:text-md md:px-8 md:py-4  border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
+                  className="inline-flex items-center justify-center gap-2 mx-5 md:text-md md:px-8 md:py-4  border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full 
+                  hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
                     fontFamily:"Akira",
                     transition: " ease-out 0.6s",
                   }}
@@ -119,7 +120,7 @@ function Hero() {
           </div>
           
 
-          <div className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+          {/* <div className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
           style={{
             transition: " ease-in 1s",
           }}>
@@ -127,8 +128,8 @@ function Hero() {
               Open to work Web Developer, Javascript Developer, Freelance,
               Frontend Developer and Development Specialist roles ..
             </h2>
-            <p className="mt-2 text-sm  hover:text-white/80">7.1.2024 last Updated</p>
-          </div>
+            <p className="mt-2 text-sm  hover:text-white/80">7.1.2025 last Updated</p>
+          </div> */}
         </main>
 
         <style>{`

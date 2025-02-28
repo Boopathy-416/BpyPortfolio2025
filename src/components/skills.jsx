@@ -57,7 +57,7 @@ export default function Skills() {
 
     tl.to(wheel, {
       rotation: 360,
-      duration: 0.6,
+      duration: 0.4,
       ease: 'ease-in',
     });
 
@@ -69,7 +69,7 @@ export default function Skills() {
 // const backgroundImageUrl = '/assets/fit gif.gif';
 
   return (
-    <section className=' md:px-20 bg-black ' > 
+    <section className='  bg-black ' > 
     <div 
       ref={containerRef} 
       className="relative h-screen text-white  overflow-hidden"
@@ -84,7 +84,7 @@ export default function Skills() {
       <div className="sticky top-0 h-screen flex items-center justify-center">
         <div 
           ref={wheelRef}
-          className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px] "
+          className="relative w-[80px] h-[40px] md:w-[100px] md:h-[150px] "
           style={{
             transform: `rotate(${rotation}deg)`,
           }}
@@ -104,17 +104,21 @@ export default function Skills() {
             </div>
           ))}
         </div>
-        <h1 className='text-4xl z-1  md:text-7xl text-end p-2 md:mx-56 justify-end overflow-hidden hover:tracking-tighter  hover:rounded-lg  transition-all '
+        <h5 className='text-xs z-1  md:text-sm text-end px-2 md:px-40 md:mx-56 justify-end overflow-hidden   hover:rounded-lg  transition-all '
         style={{
           fontFamily:"objectsans",
           transition: " ease-in 0.9s",
           // letterSpacing:"0.20em",
           // lineHeight:"2",
-        }}>What  I Bring to<br /> the Table</h1>
+        }}>I am a versatile professional with expertise in both web development and mechanical engineering. As a freelance web developer & designer, I specialize in building dynamic and responsive applications using React.js, Tailwind CSS, and the MERN stack. I am passionate about creating seamless digital experiences and have experience working with React Three Fiber for 3D interactive elements.
+
+        In addition to web development, I hold certifications in AutoCAD and SolidWorks, with a strong interest in mechanical design. I am actively seeking opportunities abroad in mechanical engineering roles, including Supervisor and Mechanical Engineer positions.
+        
+       My diverse skill set allows me to blend technology, engineering, and business strategies to drive innovation and efficiency.</h5>
         {/* <img src="/assets/div.png" width="100px" height="200px"className='scrollLeft'   style={{
             transform: `rotate(${rotation}deg)`,
           }} /> */}
-          <br />
+          
       </div>
           
     </div>
