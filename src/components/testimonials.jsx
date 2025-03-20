@@ -148,10 +148,10 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="md:px-20 px-4 bg-black"
+    <section   id="testimonials" className="md:px-20 px-4 bg-black"
 >
       <div
-        id="Testimonials"
+      
         ref={containerRef}
         className="min-h-screen md:p-20 bg-[#000] relative overflow-hidden"
       >

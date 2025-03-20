@@ -7,7 +7,7 @@ export default function Footer() {
   const buttonRef = useRef(null);
   const liquidRef = useRef(null);
   const [showThankYou, setShowThankYou] = useState(false);
-
+  const moonRef = useRef(null);
   useEffect(() => {
     if (!buttonRef.current || !liquidRef.current) return;
 
@@ -82,22 +82,36 @@ export default function Footer() {
     });
   };
 
+
+
+  useEffect(() => {
+    gsap.to(moonRef.current, {
+      y: "+=20", // Moves up and down
+      repeat: -1,
+      yoyo: true,
+      duration: 2,
+      ease: "power1.inOut",
+    });
+
+    gsap.to(moonRef.current, {
+      filter: "drop-shadow(0 0 20px #00f)",
+      scale: 1.1,
+      duration: 1.5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+    });
+  }, []);
+
   return (
-    <footer className="relative w-full bg-black  text-white transition-all px-4 py-12 md:px-8 lg:px-16"
-    style={{
-      transition:"ease-out 5s"
-    }}
+    <footer className="relative opacity-90  shadow-outer w-full bg-[#1eff1a] shadow-white border-x-8 border-black text-black   px-4 py-12 md:px-8 lg:px-16"
+
     >
-      <div className="mx-auto max-w-8xl pt-10">
+      <div className="mx-auto max-w-8xl pt-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold camelcase "  style={{ textShadow: "2px 2px 5px rgba(255, 255, 255, 0.8)" }}>E.Boopathy <br />FrontEnd Developer</h3>
-            <address className="not-italic text-md tracking-wider uppercase">
-              <p>Coimbatore district</p>
-              <p>Tamil Nadu-641 004</p>
-              <p>india</p>
-            </address>
-            <p className="md:text-sm uppercase font-semibold  tracking-wider"><Mail className="mb-2" /> boopathy1865@gmail.com</p>
+            <img  ref={moonRef} src="/assets/hii.png" width="100px" height="auto" alt="action" className="hidden md:block  " />
+            <p className="md:text-sm uppercase font-semibold  tracking-wider"> <span className=" text-xs" >website by -</span>Boopathy E</p>
           </div>
 
           <nav className="space-y-4 transition-all tracking-wider">
@@ -110,11 +124,11 @@ export default function Footer() {
           style={{
             transition:"ease-out 2s"
           }}>
-            <a href="https://github.com/Ramya-rem" className="group hover:text-[#B7FA00] flex items-center justify-between hover:tracking-widest ">
+            <a href="https://github.com/Boopathy-416" className="group hover:text-[#B7FA00] flex items-center justify-between hover:tracking-widest ">
             <Github />GitHub
               <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
-            <a href="https://www.linkedin.com/in/ramya-s-580817210/" className="group hover:text-[#B7FA00] flex items-center justify-between hover:tracking-widest ">
+            <a href="https://www.linkedin.com/in/boopathy-e-666549282" className="group hover:text-[#B7FA00] flex items-center justify-between hover:tracking-widest ">
            <LinkedinIcon />   Linkedin
               <ArrowUpRight className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </a>
@@ -125,7 +139,9 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className=" mt-2 border-t border-black pt-4 text-center"  style={{ textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)" }}>
+        <div className=" mt-2 border-t border-black pt-4 text-center"  style={{ textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+          fontFamily: "Permanent Marker, cursive"
+         }}>
         <p className="text-gray-500 text-sm">
         © {new Date().getFullYear()} Boopathy-Portfolio. All rights reserved.
       </p>
@@ -139,9 +155,9 @@ export default function Footer() {
         <button
           ref={buttonRef}
           onClick={handleClick}
-          className="fixed md:bottom-4 bottom-8 right-8 overflow-hidden rounded-full bg-black px-6 py-3 text-white transition-transform hover:text-black hover:scale-105"
+          className="fixed md:bottom-4 bottom-8 right-8 overflow-hidden hover:border-2 border-2  border-black rounded-full bg-black px-6 py-3 text-white transition-transform hover:text-black hover:scale-105"
         >
-          <span className="relative z-10 flex items-center tracking-wide gap-2">
+          <span className="relative z-10 flex items-center  text-xs tracking-wide gap-2">
             Contact me <ArrowUpRight size={20} />
           </span>
           <div
@@ -152,7 +168,7 @@ export default function Footer() {
         </button>
 
         {showThankYou && (
-          <div className="thank-you fixed bottom-24 right-8 flex items-center gap-2 rounded-full bg-black px-6 py-3 text-white opacity-0 scale-0">
+          <div className="thank-you fixed bottom-20 right-8 flex items-center gap-2 rounded-full fond-bold  shadow-black shadow-inner px-6 py-3 text-white opacity-0 scale-0">
             Thank you! <SmileIcon size={20} />
           </div>
         )}

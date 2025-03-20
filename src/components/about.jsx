@@ -2,7 +2,7 @@ import Scene from "../functionality/ThreeDModel";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-black p-5 lg:px-20 md:px-20">
+    <div id="about" className="min-h-screen bg-black p-5 lg:px-20 md:px-20">
       <div className="container mx-auto px-6 py-12 md:py-24  ">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Left Column - Content */}

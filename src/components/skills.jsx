@@ -69,7 +69,7 @@ export default function Skills() {
 // const backgroundImageUrl = '/assets/fit gif.gif';
 
   return (
-    <section className='  bg-black ' > 
+    <section id='skills' className='  bg-black ' > 
     <div 
       ref={containerRef} 
       className="relative h-screen text-white  overflow-hidden"

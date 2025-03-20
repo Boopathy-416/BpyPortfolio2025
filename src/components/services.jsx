@@ -53,7 +53,7 @@ export default function Services() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#000000] px-20 -z-10  text-white overflow-hidden">
+    <section id="services" className="relative min-h-screen bg-[#000000] px-20 -z-10  text-white overflow-hidden">
       {/* Background stars effect - keep your existing code */}
       <div className="absolute inset-0 opacity-30">
         {[...Array(50)].map((_, i) => (

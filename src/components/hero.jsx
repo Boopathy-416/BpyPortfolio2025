@@ -17,8 +17,8 @@ function Hero() {
   }, []);
 
   return (
-    <section id="about">
-      <div className="relative min-h-screen w-full overflow-hidden bg-[#000]">
+    <section id="hero">
+      <div className="relative min-h-screen w-full overflow-hidden bg-[#faf7ef]">
         {/* Particle effect */}
         <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
@@ -44,11 +44,6 @@ function Hero() {
             )`,
           }}
         />
-        {/* <div className="text-start ml-9 mb-6 mt-5">
-          <span className="inline-block px-4 py-1 border border-[#ececec] text-[#ececec] rounded-full text-sm">
-            2024-25
-          </span>
-        </div> */}
 
         {/* Portfolio heading with glow effect */}
 
@@ -61,9 +56,10 @@ function Hero() {
               style={{
                 color: "#ebebeb",
                 backgroundColor:
-                  "rgba(0, 0, 0, 0.5)" /* Optional: adds a semi-transparent background for text */,
-                padding: "11rem" /* Optional: adds spacing inside the text */,
-                backgroundImage: "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
+                  "rgba(0, 0, 0, 0.5)" ,
+                padding: "5rem" /* Optional: adds spacing inside the text */,
+                // backgroundImage:
+                  // "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
                 fontFamily: "objectsans",
                 opacity: "0.7",
               }}
@@ -99,37 +95,20 @@ function Hero() {
             </div>
           </div>
 
-          {/* Navigation links */}
-          <div className="flex flex-wrap hidden md:block  justify-center z-20 gap-20  -mt-20">
-            {["UI/UX Design", "Branding", "Portfolio", "Logo Motion"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "-")}`}
-                  className="inline-flex items-center justify-center gap-2 mx-5 md:text-md md:px-8 md:py-4  border shadow-[0_10px_50px_rgba(255,255,255,0.5)] transition-all border-[#ececec] rounded-full 
-                  hover:bg-[#ececec] hover:text-[#000] text-[#ececec] transition-colors" style={{
-                    fontFamily:"Akira",
-                    transition: " ease-out 0.6s",
-                  }}
-                >
-                  <span className="transform rotate-45">↑</span>
-                  {item}
-                </a>
-              )
-            )}
-          </div>
-          
-
-          {/* <div className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
-          style={{
-            transition: " ease-in 1s",
-          }}>
+          <div
+            className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+            style={{
+              transition: " ease-in 1s",
+            }}
+          >
             <h2 className="text-xl font-bold">
               Open to work Web Developer, Javascript Developer, Freelance,
               Frontend Developer and Development Specialist roles ..
             </h2>
-            <p className="mt-2 text-sm  hover:text-white/80">7.1.2025 last Updated</p>
-          </div> */}
+            <p className="mt-2 text-sm  hover:text-white/80">
+              7.1.2025 last Updated
+            </p>
+          </div>
         </main>
 
         <style>{`
@@ -143,9 +122,6 @@ function Hero() {
     }
   }
 `}</style>
-
-
-
       </div>
     </section>
   );
