@@ -80,11 +80,11 @@ export default function Contact() {
       className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white"
     >
       <div className="md:w-1/3 p-8 md:py-40 md:absolute md:h-screen  flex flex-col justify-start">
-        <h1 className="text-6xl md:text-7xl font-thin  mb-12 md:px-5  ">
+        <h1 className="text-6xl md:text-7xl font-thin  mb-12 md:px-5 font-['robo']  ">
           CONTACT
         </h1>
         <div
-          className="space-y-4 border-2 border-green-500 px-3 py-4 tracking-widest  text-sm md:py-4 md:px-8 "
+          className="space-y-4 border-2  border-green-500 px-3 py-4 tracking-widest  text-sm md:py-4 md:px-8 "
           style={{
             textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
             fontFamily: "PermanentMarker",
@@ -102,14 +102,14 @@ export default function Contact() {
             <p>Coimbatore</p>
             <p>Tamil Nadu, India</p>
           </div>
-          <div class="  overflow-auto flex items-center justify-center shadow-lg">
+          <div class="  overflow-auto flex  items-center justify-center shadow-lg">
             <p
-              class="text-sm sm:text-base hover:bg-[#222222] tracking-widest font-['PermanentMarker'] md:text-start "
+              class="text-sm sm:text-base px-2 hover:bg-[#222222] tracking-widest font-['PermanentMarker'] md:text-start "
 
             style={{
               textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
             }}>
-              <h5 className="font-black w-1/2 flex justify-center mx-20 my-2 items-center border-y-4 text-center">Work together</h5>
+              <h5 className="font-black w-1/2 flex  justify-center mx-20 my-2 items-center border-y-4 text-center">Work together</h5>
               Whether you're a fresh startup ready to shape your identity or an
               established brand looking for a digital revamp, we'd love to dive
               into your story. With over best years of experience in web design,
@@ -124,10 +124,10 @@ export default function Contact() {
 
       <div className="md:w-2/3 md:ml-[44.333%] p-8 md:p-16">
         <div ref={formContainerRef} className="max-w-3xl ">
-          <h2 className="text-3xl md:text-2xl md:py-4  font-bold mb-4">
+          <h2 className="text-3xl font-['robot'] md:text-2xl md:py-4  font-bold mb-4">
             LET US KNOW WHAT YOU'RE LOOKING FOR →<br /> AND WE'LL BE IN TOUCH. ☺
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-10">
+          <form onSubmit={handleSubmit} className="space-y-10 font-['robo'] ">
             {[
               "FIRST & LAST NAME",
               "EMAIL",
@@ -138,21 +138,20 @@ export default function Contact() {
               <div key={index} ref={addToFieldRefs} className="form-field">
                 <input
                   type="text"
-                  className="w-full bg-transparent border-b text-[#dedede] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+                  className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
                   placeholder={placeholder}
                 />
               </div>
             ))}
             <div
               ref={servicesRef}
-              className="mt-16"
+              className="mt-16 font-['robo'] "
               style={{
                 textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-                fontFamily: "Permanent Marker, cursive",
               }}
             >
               <h3 className="text-2xl font-bold mb-6">SERVICES NEEDED</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid text-xs grid-cols-1 md:grid-cols-2 gap-4">
                 {[
                   "BRANDING",
                   "WEB DESIGN",
@@ -163,7 +162,7 @@ export default function Contact() {
                 ].map((service, index) => (
                   <div
                     key={index}
-                    className="service-item flex items-center gap-3"
+                    className="service-item text-xs flex items-center gap-3"
                   >
                     <div className="w-5 h-5 border border-white label:green-400 flex items-center justify-center">
                       <input type="checkbox"  id={service} />
@@ -174,10 +173,9 @@ export default function Contact() {
               </div>
             </div>
             <div
-              className="pt-8"
+              className="pt-8 font-['robo'] "
               style={{
                 textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-                fontFamily: "Permanent Marker",
               }}
             >
               <button

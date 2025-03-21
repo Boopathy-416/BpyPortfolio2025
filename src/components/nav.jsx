@@ -51,10 +51,10 @@ export default function Navbar() {
       <div className="text-start">
         <span className="inline-block px-5 py-3 border-[#424242] text-gray-500 text-xs relative overflow-hidden group">
           {currentYear}-{currentYear + 1}
-          <span className="absolute top-0 left-0 w-full h-[2px] bg-black transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute top-0 right-0 w-[2px] h-full bg-black transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-black transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-black transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute top-0 left-0 w-full h-[2px] bg-[#f44336] transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute top-0 right-0 w-[2px] h-full bg-[#f44336] transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-[#f44336] transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-[#f44336] transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
         </span>
       </div>
 
@@ -109,20 +109,20 @@ export default function Navbar() {
       <div className="hidden lg:block">
         <a
           href="#footer"
-          className="relative text-xs px-6 py-3 border-[#424242] uppercase font-bold transition-all duration-500 ease-in-out overflow-hidden group"
+          className="relative text-white text-xs px-6 py-3 border-[#424242] uppercase font-bold transition-all duration-500 ease-in-out overflow-hidden group"
         >
           GET IN TOUCH
-          <span className="absolute top-0 left-0 w-full h-[2px] bg-black transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute top-0 right-0 w-[2px] h-full bg-black transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-black transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-black transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute top-0 left-0 w-full h-[2px] bg-[#4178dc] transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute top-0 right-0 w-[2px] h-full bg-[#4178dc] transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-[#4178dc] transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-[#4178dc] transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
         </a>
       </div>
 
       {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex  justify-center items-center z-40"
+          className="fixed inset-0 bg-black bg-opacity-50 flex py-20 h-screen justify-center items-center z-40"
           onClick={() => setMenuOpen(false)}
           style={{
             textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
@@ -130,7 +130,7 @@ export default function Navbar() {
           }}
         >
           <div
-            className="w-full mx-5 mt-40  min-h-full py-10 px-5  border-4 border-gray-500 grid grid-cols-2 gap-4 text-white text-center uppercase font-bold relative"
+            className="w-50 h-60   py-10 px-5  border-4 border-gray-500 grid grid-cols-2 gap-4 text-white text-center uppercase font-bold relative"
             onClick={(e) => e.stopPropagation()}
           >
             {sections.map((section) => (
