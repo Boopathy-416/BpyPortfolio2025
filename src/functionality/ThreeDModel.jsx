@@ -1,27 +1,29 @@
-// Scene.jsx
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import Model from "./Model";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+
+function Model({ url }) {
+  const { scene } = useGLTF(url);
+  return <primitive object={scene} scale={[1, 1, 1]} position={[0, -4, 0]} />;
+}
 
 export default function Scene() {
   return (
-    <div  style={{ width: "100%", height: "50vh",border:"1px solid white" }}>
+    <div className="w-full md:h-screen h-[50%] ">
       <Canvas
-        camera={{ position: [0, 1, 5] }}
-        style={{ background: "#000", cursor:"pointer" }}
+        camera={{ position: [-10, 5, -10], fov: 40, scale:[2, 2, 2,] }}
+        
+        style={{ background: "transparent", cursor: "pointer" }}
       >
+        <ambientLight intensity={50} />
+        <directionalLight position={[40, 80, 0]} intensity={50} />
+
         <Suspense fallback={null}>
-          <Model url="/assets/3d assests/particle_ai_brain.gltf" />
-
+          <Model url="/assets/3d assests/robot.glb" />
           <OrbitControls enableDamping={true} />
-        </Suspense>
 
-        <ambientLight intensity={0.1} />
-        <directionalLight position={[0, 50, 20]} intensity={3} />
+        </Suspense>
       </Canvas>
     </div>
   );
 }
-
-

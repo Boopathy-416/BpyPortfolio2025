@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // Import icons
+import clickSound from "/assets/audio/navmusic.wav"; // Import sound file
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -9,6 +11,13 @@ export default function Navbar() {
   const currentYear = new Date().getFullYear();
   const [activeSection, setActiveSection] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (activeSection) {
+      const audio = new Audio(clickSound);
+      audio.play();
+    }
+  }, [activeSection]); // Runs when activeSection changes
 
   const sections = [
     { id: "hero", label: "Home" },
@@ -37,7 +46,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed z-50 w-full bg-transparent px-6 py-4 border-b-2 border-gray-700 flex justify-between items-center">
+    <header className="fixed backdrop-blur-sm z-50 w-full bg-transparent px-6 py-4 border-b-2 border-gray-700 flex justify-between items-center">
       {/* Left - Year with Border Animation */}
       <div className="text-start">
         <span className="inline-block px-5 py-3 border-[#424242] text-gray-500 text-xs relative overflow-hidden group">
@@ -64,7 +73,9 @@ export default function Navbar() {
             key={section.id}
             href={`#${section.id}`}
             className={`relative text-sm font-semibold px-4 py-2 transition-colors group ${
-              activeSection === section.id ? "text-white" : "text-gray-500"
+              activeSection === section.id
+                ? "text-white font-['robot'] tracking-wider shadow-inner shadow-slate-400"
+                : "text-gray-500"
             }`}
           >
             {section.label}
@@ -72,7 +83,7 @@ export default function Navbar() {
             {/* Camera Shutter Borders */}
             <span
               className={`absolute top-0 left-0 w-full h-[2px] bg-[#c4c1c6] transform ${
-                activeSection === section.id ? "scale-x-100" : "scale-x-0"
+                activeSection === section.id ? "scale-x-100 " : "scale-x-0  "
               } origin-right transition-transform duration-300`}
             ></span>
             <span
@@ -115,7 +126,7 @@ export default function Navbar() {
           onClick={() => setMenuOpen(false)}
           style={{
             textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-            fontFamily: "Permanent Marker, cursive",
+            fontFamily: "Permanent Marker",
           }}
         >
           <div

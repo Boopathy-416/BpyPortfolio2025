@@ -18,7 +18,7 @@ function Hero() {
 
   return (
     <section id="hero">
-      <div className="relative min-h-screen w-full overflow-hidden bg-[#faf7ef]">
+      <div className="relative min-h-screen w-full overflow-hidden bg-black">
         {/* Particle effect */}
         <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
@@ -51,21 +51,20 @@ function Hero() {
         <main className="relative flex min-h-screen flex-col items-center justify-center px-4">
           {/* Bottom badges */}
           <div className="relative  ">
-            <h1
-              className="text-[clamp(3rem,15vw,8rem)] np bg-no-repeat leading-none font-black text-center"
-              style={{
-                color: "#ebebeb",
-                backgroundColor:
-                  "rgba(0, 0, 0, 0.5)" ,
-                padding: "5rem" /* Optional: adds spacing inside the text */,
-                // backgroundImage:
-                  // "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
-                fontFamily: "objectsans",
-                opacity: "0.7",
-              }}
-            >
-              Portfolio
-            </h1>
+          <h1
+  className="text-[clamp(3rem,15vw,8rem)] drop-shadow-sm shadow-[0_10px_50px_rgba(255,255,255,0.5)] bg-no-repeat leading-none font-black text-center"
+  style={{
+    padding: "5rem",
+    backgroundImage:
+      "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
+    fontFamily: "objectsans",
+    opacity: "0.7",
+    color: "transparent", // Make text transparent to show only stroke
+    WebkitTextStroke: "0.5px white", // White outline effect
+  }}
+>
+  Bpy Creation
+</h1>
             {/* Green glow effect */}
             <div
               className="absolute -right-1 top-0 w-24 h-24 bg-[#ececec] blur-[100px] opacity-90"
@@ -96,14 +95,13 @@ function Hero() {
           </div>
 
           <div
-            className="absolute bottom-8 md:bottom-44 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+            className="absolute bottom-8 md:bottom-20 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
             style={{
               transition: " ease-in 1s",
             }}
           >
             <h2 className="text-xl font-bold">
-              Open to work Web Developer, Javascript Developer, Freelance,
-              Frontend Developer and Development Specialist roles ..
+            Open to work | MERN Stack Developer | Frontend & Backend Expertise | Passionate about UI/UX  | Let's connect!
             </h2>
             <p className="mt-2 text-sm  hover:text-white/80">
               7.1.2025 last Updated

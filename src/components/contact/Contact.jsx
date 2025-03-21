@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useState } from "react";
+import "../../App.css";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -74,15 +75,21 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white">
-
+    <div
+      id="contact"
+      className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white"
+    >
       <div className="md:w-1/3 p-8 md:py-40 md:absolute md:h-screen  flex flex-col justify-start">
         <h1 className="text-6xl md:text-7xl font-thin  mb-12 md:px-5  ">
           CONTACT
         </h1>
-        <div className="space-y-4 tracking-widest  text-sm md:py-4 md:px-8 "  style={{ textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-          fontFamily: "Permanent Marker, cursive"
-         }}>
+        <div
+          className="space-y-4 border-2 border-green-500 px-3 py-4 tracking-widest  text-sm md:py-4 md:px-8 "
+          style={{
+            textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+            fontFamily: "PermanentMarker",
+          }}
+        >
           <a
             href="mailto:boopathy1865@gmail.com"
             className="block text-green-500 hover:underline"
@@ -95,11 +102,25 @@ export default function Contact() {
             <p>Coimbatore</p>
             <p>Tamil Nadu, India</p>
           </div>
+          <div class="  overflow-auto flex items-center justify-center shadow-lg">
+            <p
+              class="text-sm sm:text-base hover:bg-[#222222] tracking-widest font-['PermanentMarker'] md:text-start "
+
+            style={{
+              textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+            }}>
+              <h5 className="font-black w-1/2 flex justify-center mx-20 my-2 items-center border-y-4 text-center">Work together</h5>
+              Whether you're a fresh startup ready to shape your identity or an
+              established brand looking for a digital revamp, we'd love to dive
+              into your story. With over best years of experience in web design,
+              branding, art direction, and illustration, we specialize in
+              delivering innovative and creative work. we're eager to bring
+              unique and visionary ideas to your project. Let's create something
+              extraordinary together!
+            </p>
+          </div>
         </div>
       </div>
-
-
-
 
       <div className="md:w-2/3 md:ml-[44.333%] p-8 md:p-16">
         <div ref={formContainerRef} className="max-w-3xl ">
@@ -122,9 +143,14 @@ export default function Contact() {
                 />
               </div>
             ))}
-            <div ref={servicesRef} className="mt-16"  style={{ textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-          fontFamily: "Permanent Marker, cursive"
-         }}>
+            <div
+              ref={servicesRef}
+              className="mt-16"
+              style={{
+                textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+                fontFamily: "Permanent Marker, cursive",
+              }}
+            >
               <h3 className="text-2xl font-bold mb-6">SERVICES NEEDED</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {[
@@ -139,17 +165,21 @@ export default function Contact() {
                     key={index}
                     className="service-item flex items-center gap-3"
                   >
-                    <div className="w-5 h-5 border border-white flex items-center justify-center">
-                      <input type="checkbox" id={service} />
+                    <div className="w-5 h-5 border border-white label:green-400 flex items-center justify-center">
+                      <input type="checkbox"  id={service} />
                     </div>
                     <span>{service}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="pt-8"  style={{ textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-          fontFamily: "Permanent Marker, cursive"
-         }}>
+            <div
+              className="pt-8"
+              style={{
+                textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+                fontFamily: "Permanent Marker",
+              }}
+            >
               <button
                 type="submit"
                 className="px-8 py-3 bg-white text-xs md:text-sm text-black font-semibold  hover:bg-gray-200 transition-colors"

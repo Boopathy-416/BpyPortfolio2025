@@ -9,7 +9,10 @@
     font-family: 'Marvel';
     src: url('/assets/fonts/MarvelRegular-Dj83.ttf') format('truetype');
   }
-
+  @font-face {
+    font-family: 'robo';
+    src: url('./assets/fonts/Bruce Forever.ttf') format('truetype');
+  }
   @font-face {
     font-family: 'kungfu';
     src: url('/assets/fonts/KungFuMasterExpanded-X32x2.otf') format('truetype');
@@ -26,9 +29,16 @@
     src: url('/assets/fonts/Akira Expanded Demo.otf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'PermanentMarker';
+    src: url('../public/assets/fonts/PermanentMarker.ttf') format('truetype');
+  }
 
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+  @font-face {
+    font-family: 'robot';
+    src: url('../public/assets/fonts/square_sans_serif_7.ttf') format('truetype');
+  }
 
 
 /* Mobile-only animation */
