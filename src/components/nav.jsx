@@ -122,7 +122,7 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-90 flex py-20 h-screen justify-center items-center z-40"
+          className="fixed inset-0 bg-black bg-opacity-90 flex py-10 h-screen justify-center items-center z-40"
           onClick={() => setMenuOpen(false)}
           style={{
           

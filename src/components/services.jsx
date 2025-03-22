@@ -1,60 +1,82 @@
-
-import React, { useEffect, useRef } from "react";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function Services() {
-  const servicesRef = useRef([]);
-  const services = [
-    { id: 1, name: "Front-end developer", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818152/rb_1155_s5e4cw.png",  textColor: "text-yellow-100"  },
-    { id: 2, name: "UX/UI Designer", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818150/rb_8193_e1luos.png",  textColor: "text-green-300" },
-    { id: 3, name: "video editor", image: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1737818152/vc_u6klmt.png", textColor: "text-pink-400" },
-  ];
+  const sectionRefs = useRef([]);
+  const listItemRefs = useRef([]);
 
   useEffect(() => {
-    // Create GSAP ScrollTrigger animations for each service section
-    servicesRef.current.forEach((section, index) => {
-      ScrollTrigger.create({
-        trigger: section,
-        start: "top top",
-        end: "bottom top",
-        pin:true,
-        pinSpacing:false,
-        id: `service-${index + 1}`,
-      });
+    gsap.registerPlugin(ScrollTrigger);
+
+    sectionRefs.current.forEach((section) => {
+      if (!section) return;
+
+      const heading = section.querySelector("h2");
+      const paragraph = section.querySelector("p");
+      const phase = section.querySelector(".phase");
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 70%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        })
+        .fromTo(
+          heading,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }
+        )
+        .fromTo(
+          paragraph,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" },
+          "-=0.4"
+        )
+        .fromTo(
+          phase,
+          { opacity: 0, x: -20 },
+          { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" },
+          "-=0.4"
+        );
     });
 
-    // Optional: Smooth scrolling
-    const smoothScroll = gsap.matchMedia();
+    listItemRefs.current.forEach((item, index) => {
+      if (!item) return;
 
-    smoothScroll.add("(min-width: 800px)", () => {
-      gsap.utils.toArray('.services-section').forEach((section, i) => {
-        ScrollTrigger.create({
-          trigger: section,
-          start: "top center",
-          end: "bottom center",
-          animation: gsap.to(section, {
-            scale: 1,
-            opacity: 1,
-            duration: 0.5,
-            ease: "power2.out"
-          }),
-          toggleActions: "play none none reverse",
-        });
-      });
+      gsap.fromTo(
+        item,
+        { opacity: 0, x: 40 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          delay: index * 0.1,
+        }
+      );
     });
 
-    // Cleanup
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
+    // style={{
+    //     fontFamily: "kungfu",
+    //     letterSpacing: "0.6em",
+    //   }}
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
   return (
-    <section id="services" className="relative min-h-screen bg-[#000000] px-20 -z-10  text-white overflow-hidden">
-      {/* Background stars effect - keep your existing code */}
+    <div
+      id="services"
+      className="skills-container bg-black text-white overflow-hidden"
+    >
       <div className="absolute inset-0 opacity-30">
         {[...Array(50)].map((_, i) => (
           <div
@@ -68,77 +90,84 @@ export default function Services() {
           />
         ))}
       </div>
+      {[
+        "Briefing, Research and Conceptualization",
+        "Shooting and Creativity",
+        "Editing and Realization",
+      ].map((title, i) => (
         <div
-        className="md:text-center "
-        style={{
-          fontFamily: "kungfu",
-          letterSpacing: "0.6em",
-        }}
-      >
-      
-        <h1 className="md:text-[80px] p-5 my-4  text-2xl font-bold text-[#e9e9e9] text-center">
-        Code {">"} Design {">"} Transform 
-        
-        </h1>
-        <hr className="  border-[#f0f0f050] border-[1.5px]" />
-      </div>
-
-
-      {/* Services Grid */}
-      <div className="grid gap-24 py-24 px-8 md:px-16">
-        {services.map((service, index) => (
-          <div
-            key={service.id}
-            id={`service-section-${service.id}`}
-            ref={el => servicesRef.current[index] = el}
-            className={`services-section grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-screen`}
-          >
-            <div
-              className={`space-y-2 ${
-                index % 2 === 0 ? "md:order-1" : "md:order-2"
-              }`}
-            >
-              <h2 
-                className={ `text-4xl backdrop-blur-2xl transition-all  rounded-md text-center uppercase md:text-[86px] font-bold leading-normal tracking-tighter ${service.textColor} `}
-                style={{
-                  textShadow: '0 0 30px rgba(210, 251, 81, 0.3)',
-                  fontFamily: "Marvel",
-                  transition: " ease-in 0.9s",
-                  letterSpacing: "0.03em",
-                }}
-              >
-                {service.name}
-              </h2>
-              <hr className="  border-[#f0f0f050] border-[1.5px]" />
+          key={i}
+          ref={(el) => (sectionRefs.current[i] = el)}
+          className="section py-16 border-t border-gray-800"
+        >
+          <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row">
+            <div className="md:w-1/2 pr-0 md:pr-12">
+              <h2 className="text-4xl md:text-5xl font-light mb-6">{title}</h2>
+              <p className="text-lg opacity-80">
+                {i === 0
+                  ? "Communication - my Client is my partner. I start by thoroughly researching your project, its goals, and target audience. Based on the gathered insights, I develop a unique concept and script that reflects your vision."
+                  : i === 1
+                  ? "I meticulously prepare for shoots, ensuring high-quality video footage. I work on capturing compelling shots that engage viewers and convey your message effectively."
+                  : "At this stage, I creatively piece together all elements to craft captivating videos. Special effects, editing, sound design — I do everything possible to make your video stand out."}
+              </p>
             </div>
-            <div
-              className={`relative aspect-[2/3] ${
-                index % 2 === 0 ? "md:order-2" : "md:order-1"
-              }`}
-            >
-              <img
-                src={service.image}
-                alt={`${service.name} service illustration`}
-                className="object-cover  rounded-lg w-[350px] h-auto "
-              />
+            <div className="md:w-1/2 mt-8 md:mt-0 flex flex-col">
+              <div className="phase text-xl md:text-2xl mb-6 opacity-70">
+                {i === 0
+                  ? "Pre—idea"
+                  : i === 1
+                  ? "Production—creation"
+                  : "Post—realization"}
+              </div>
+              <ul className="space-y-4 text-2xl md:text-3xl font-light italic">
+                {[
+                  [
+                    "Project Goals",
+                    "Target Audience",
+                    "Budget",
+                    "Content Requirements",
+                    "Trends",
+                    "Visual concept — treatment",
+                    "Script",
+                    "Shooting plan",
+                  ],
+                  ["Filming"],
+                  [
+                    "Video and sound editing",
+                    "Color correction and visual effects",
+                    "Adding titles and graphics",
+                  ],
+                ][i].map((item, j) => (
+                  <li
+                    key={j}
+                    ref={(el) => (listItemRefs.current[i * 8 + j] = el)}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
 
-      {/* Portfolio Text */}
-      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
-        <span className="text-sm tracking-widest uppercase">
+      <div className="absolute  right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
+        <span className="text-sm opacity-20 tracking-widest uppercase">
           BPY _ Creation Portfolio 2025
         </span>
       </div>
 
       <style jsx global>{`
         @keyframes twinkle {
-          0%, 100% { opacity: 0; }
-          100% { opacity: 1; }
+          0%,
+          100% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
         }
       `}</style>
-    </section>
+    </div>
   );
 }

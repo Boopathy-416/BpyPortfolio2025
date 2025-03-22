@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 
+
 function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const items = ["UI/UX", "Branding", "Web development", "Logo Motion"];
@@ -20,6 +21,7 @@ function Hero() {
     <section id="hero">
       <div className="relative min-h-screen w-full overflow-hidden bg-black">
         {/* Particle effect */}
+        
         <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
             <div
@@ -95,7 +97,7 @@ function Hero() {
           </div>
 
           <div
-            className="absolute bottom-20 md:bottom-20 transition-all right-10   max-w-xs rounded bg-[#ececec] hover:bg-black  hover:text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+            className="absolute bottom-20 md:bottom-20 transition-all right-10   max-w-xs rounded hover:text-black hover:bg-[#ececec] bg-black  text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
             style={{
               transition: " ease-in 1s",
             }}

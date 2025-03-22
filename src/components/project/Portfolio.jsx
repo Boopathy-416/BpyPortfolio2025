@@ -239,7 +239,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div id="testimonials" ref={containerRef} className="min-h-screen md:px-5 bg-red-800 text-white">
+    <div id="testimonials" ref={containerRef} className="min-h-screen  bg-red-800 text-white">
       <div ref={logoRef} className="p-6 opacity-0">
         <h1 className="text-4xl font-bold tracking-tighter">MY PROJECTS</h1>
         <p className="text-xs tracking-widest">PORTFOLIO SHOWCASE</p>

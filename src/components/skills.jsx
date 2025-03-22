@@ -1,127 +1,191 @@
-import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useRef, useState, useEffect } from "react";
+import { Save, Undo, Pencil, Eraser, Palette } from "lucide-react";
+import gsap from "gsap";
+import catSound from "/assets/audio/woww.wav"; // Add your cat sound file
 
-gsap.registerPlugin(ScrollTrigger);
-
-const skills = [
-  { name: 'React', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
-  { name: 'Node.js', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
-  { name: 'Tailwind', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
-  { name: 'Figma', icon: 'https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg' },
-  { name: 'GraphQL', icon: ' https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg' },
-  { name: 'MongoDB', icon: 'https://webassets.mongodb.com/_com_assets/cms/mongodb_logo1-76twgcu2dm.png' },
-  { name: 'Java', icon: 'https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg' },
-  { name: 'Git', icon: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg' },
-  { name: 'CSS', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg' },
-  { name: 'HTML', icon: 'https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg' },
-  { name: 'JavaScript', icon: ' https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png' },
-];
-
-export default function Skills() {
-  const containerRef = useRef(null);
-  const wheelRef = useRef(null);
-  const [rotation, setRotation] = useState(0);
+export default function DrawingCanvas() {
+  const canvasRef = useRef(null);
+  const ctxRef = useRef(null);
+  const [drawing, setDrawing] = useState(false);
+  const [color, setColor] = useState("black");
+  const [lineWidth, setLineWidth] = useState(5);
+  const bubbleRef = useRef(null);
+  const audioRef = useRef(new Audio(catSound));
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    if (!wheelRef.current) return;
-
-    const wheel = wheelRef.current;
-    const itemCount = skills.length;
-    const angleStep = 360 / itemCount;
-
-    skills.forEach((_, index) => {
-      const item = wheel.children[index];
-      const angle = angleStep * index;
-      const radius = 200;
-
-      gsap.set(item, {
-        x: Math.cos((angle * Math.PI) / 180) * radius,
-        y: Math.sin((angle * Math.PI) / 180) * radius,
-        rotation: angle,
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
       });
-    });
+    };
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top center',
-        end: 'bottom center',
-        scrub: 1,
-        onUpdate: (self) => {
-          const currentRotation = (self.progress * 360) % 360;
-          setRotation(currentRotation);
-        },
-      },
-    });
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
-    tl.to(wheel, {
-      rotation: 360,
-      duration: 0.4,
-      ease: 'ease-in',
-    });
+  useEffect(() => {
+    gsap.set(bubbleRef.current, { opacity: 0, scale: 0 });
+
+    const handleMouseEnter = () => {
+      gsap.to(bubbleRef.current, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.5,
+        ease: "bounce.out",
+      });
+      audioRef.current.play();
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(bubbleRef.current, { opacity: 0, scale: 0, duration: 0.3 });
+    };
+
+    const image = document.getElementById("hover-image");
+    image.addEventListener("mouseenter", handleMouseEnter);
+    image.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
-      tl.kill();
+      image.removeEventListener("mouseenter", handleMouseEnter);
+      image.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
-// const backgroundImageUrl = '/assets/fit gif.gif';
+  const startDrawing = (e) => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.lineCap = "round";
+    ctx.beginPath();
+    ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    setDrawing(true);
+  };
+
+  const draw = (e) => {
+    if (!drawing) return;
+    const ctx = canvasRef.current.getContext("2d");
+    ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+    ctx.stroke();
+  };
+
+  const stopDrawing = () => {
+    setDrawing(false);
+  };
+
+  const clearCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  };
+
+  const saveCanvas = () => {
+    const link = document.createElement("a");
+    link.download = "drawing.png";
+    link.href = canvasRef.current.toDataURL();
+    link.click();
+  };
 
   return (
-    <section id='skills' className='  bg-black ' > 
-    <div 
-      ref={containerRef} 
-      className="relative h-screen text-white  overflow-hidden"
-      style={{
-        backgroundImage: 'url("/assets/fit gif.gif")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
+    <div
+      id="skills"
+      className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center bg-black"
     >
-      
-      <div className="sticky top-0 h-screen flex items-center justify-center">
-        <div 
-          ref={wheelRef}
-          className="relative w-[80px] h-[40px] md:w-[100px] md:h-[150px] "
-          style={{
-            transform: `rotate(${rotation}deg)`,
-          }}
-        >
-          {skills.map((skill) => (
-            <div
-              key={skill.name}
-              className="absolute w-20 h-20 md:w-60 md:h-60 rounded-full bg-white/30 backdrop-blur-sm
-                        flex items-center justify-center text-6xl transform -translate-x-8 -translate-y-8
-                        border-1 border-white/0.5 hover:border-white/50 pointer-events-none transition-colors
-                        "
-              style={{
-                transformOrigin: '50% 50%',
-              }}
-            >
-              <img src={skill.icon} alt={skill.name} className="md:w-20 md:h-20 w-10 h-10" />
-            </div>
-          ))}
-        </div>
-        <h5 className='text-xs z-1  md:text-sm text-end px-2 md:px-40 md:mx-56 justify-end overflow-hidden   hover:rounded-lg  transition-all '
-        style={{
-          fontFamily:"objectsans",
-          transition: " ease-in 0.9s",
-          // letterSpacing:"0.20em",
-          // lineHeight:"2",
-        }}>I am a versatile professional with expertise in both web development and mechanical engineering. As a freelance web developer & designer, I specialize in building dynamic and responsive applications using React.js, Tailwind CSS, and the MERN stack. I am passionate about creating seamless digital experiences and have experience working with React Three Fiber for 3D interactive elements.
-
-        In addition to web development, I hold certifications in AutoCAD and SolidWorks, with a strong interest in mechanical design. I am actively seeking opportunities abroad in mechanical engineering roles, including Supervisor and Mechanical Engineer positions.
-        
-       My diverse skill set allows me to blend technology, engineering, and business strategies to drive innovation and efficiency.</h5>
-        {/* <img src="/assets/div.png" width="100px" height="200px"className='scrollLeft'   style={{
-            transform: `rotate(${rotation}deg)`,
-          }} /> */}
-          
+      {/* Particle effect */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-0.5 w-0.5 rounded-full bg-white opacity-50 animate-twinkle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 5 + 3}s`,
+            }}
+          />
+        ))}
       </div>
-          
+      {/* Top-left Image */}
+
+      <h1 className="md:text-5xl text-3xl font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 border-y mb-2">
+        Showcase Your Talent
+      </h1>
+      <img
+        src="/assets/paint.svg"
+        alt="Top Left"
+        className="hidden md:block absolute top-5 left-5 w-20 h-20"
+      />
+
+      {/* Bottom-right Image */}
+
+      {/* Image */}
+      <img
+        id="hover-image"
+        src="https://media.giphy.com/media/wKFY1XaNEainm/giphy.gif"
+        alt="Bottom Right"
+        className="hidden md:block absolute bottom-5 right-5 w-40 h-50"
+      />
+
+      {/* Speech Bubble */}
+      <div
+        ref={bubbleRef}
+        className="absolute bottom-1/3 right-5 bg-border-4 text-white p-3 rounded-lg shadow-lg flex items-center justify-center"
+      >
+        <svg
+          width="100"
+          height="50"
+          viewBox="0 0 100 50"
+          className="absolute -bottom-3 right-2"
+        >
+          <path
+            d="M10,50 Q50,-10 90,50"
+            fill="white"
+            stroke="black"
+            strokeWidth="2"
+          />
+        </svg>
+        <span className="text-sm font-bold">Woww Nice One!</span>
+      </div>
+
+      {/* Canvas */}
+      <canvas
+        ref={canvasRef}
+        width={800}
+        height={500}
+        className="bg-white rounded-lg shadow-xl cursor-crosshair"
+        onMouseDown={startDrawing}
+        onMouseMove={draw}
+        onMouseUp={stopDrawing}
+        onMouseOut={stopDrawing}
+      ></canvas>
+
+      {/* Tools */}
+      <div className="absolute bottom-10 flex gap-4 bg-black p-4 rounded-full shadow-lg shadow-white">
+        <button
+          onClick={() => setColor("black")}
+          className="p-2 bg-gray-700 rounded-full"
+        >
+          <Pencil color="white" />
+        </button>
+        <button
+          onClick={() => setColor("white")}
+          className="p-2 bg-gray-700 rounded-full"
+        >
+          <Eraser color="white" />
+        </button>
+        <input
+          type="color"
+          onChange={(e) => setColor(e.target.value)}
+          className="w-10 h-10 rounded-full cursor-pointer"
+        />
+        <button onClick={saveCanvas} className="p-2 bg-gray-700 rounded-full">
+          <Save color="white" />
+        </button>
+        <button onClick={clearCanvas} className="p-2 bg-gray-700 rounded-full">
+          <Undo color="white" />
+        </button>
+      </div>
     </div>
-    </section>
   );
 }

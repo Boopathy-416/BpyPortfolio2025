@@ -139,7 +139,7 @@ export default function Testimonials() {
         ref={containerRef}
         className="min-h-full md:p-20 bg-[#000] relative overflow-hidden"
       >
-        <div className="container mx-auto px-4 py-20 relative">
+        <div className="container mx-auto rounded-2xl shadow-xl shadow-white px-4 py-20 relative">
           <div
             ref={sliderRef}
             className="inline-flex gap-8 px-4 whitespace-nowrap relative"
