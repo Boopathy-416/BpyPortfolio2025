@@ -122,22 +122,22 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 flex py-20 h-screen justify-center items-center z-40"
+          className="fixed inset-0 bg-black bg-opacity-90 flex py-20 h-screen justify-center items-center z-40"
           onClick={() => setMenuOpen(false)}
           style={{
-            textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-            fontFamily: "Permanent Marker",
+          
+            fontFamily: "PermanentMarker",
           }}
         >
           <div
-            className="w-50 h-60   py-10 px-5  border-4 border-gray-500 grid grid-cols-2 gap-4 text-white text-center uppercase font-bold relative"
+            className="w-50 h-60   py-10 px-5   grid grid-cols-2 gap-4 text-white text-center uppercase font-bold relative"
             onClick={(e) => e.stopPropagation()}
           >
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="nav-item text-xs hover:text-gray-400 border flex justify-center items-center hover:bg-slate-400 transition-all"
+                className="nav-item text-xs px-2  hover:text-black hover:border-red-800 hover-border-2  border-2 flex justify-center items-center hover:bg-slate-400 transition-all"
                 onClick={() => setMenuOpen(false)}
               >
                 {section.label}

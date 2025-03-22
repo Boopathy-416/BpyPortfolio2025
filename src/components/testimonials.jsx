@@ -44,20 +44,6 @@ export default function Testimonials() {
       description: "Muscular anthropomorphic character model",
       link: "https://landingsitebpycreation.vercel.app/",
     },
-    // {
-    //   id: 6,
-    //   title: 'Anthro Character',
-    //   image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-12%20103836-bslqYn2siwvYgJn0yiqnFo6E0jViE9.png',
-    //   description: 'Muscular anthropomorphic character model',
-    //   link: 'https://project2.com'
-    // },
-    // {
-    //   id: 7,
-    //   title: 'Anthro Character',
-    //   image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-12%20103836-bslqYn2siwvYgJn0yiqnFo6E0jViE9.png',
-    //   description: 'Muscular anthropomorphic character model',
-    //   link: 'https://project2.com'
-    // }
   ];
 
   // Duplicate your projects array so it can loop seamlessly
@@ -148,46 +134,21 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section   id="testimonials" className="md:px-20 px-4 bg-black"
->
+    <section className="md:px-20 px-4 bg-black">
       <div
-      
         ref={containerRef}
-        className="min-h-screen md:p-20 bg-[#000] relative overflow-hidden"
+        className="min-h-full md:p-20 bg-[#000] relative overflow-hidden"
       >
-        <div
-          className="md:text-center text-start "
-          style={{
-            fontFamily: "kungfu",
-            letterSpacing: "0.6em",
-          }}
-        >
-          <h1 className="md:text-[200px] p-5 border-3 md:mt-10 text-2xl font-bold text-[#e9e9e9] text-center">
-            Projects{" "}
-            <span className="text-sm text-gray-700 tracking-wide">lIVE 🔴</span>
-          </h1>
-          <h2
-            className="md:text-xl text-center border-1 border text-sm bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTN5dXhlZWJtY29uOHgwaW9oOTNycnBiM3F1eW45Mmx3b3E1bGM2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpFFhlNiBoZJWhdskD/giphy.webp')] text-[#000] transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-gray-400"
-            style={{
-              opacity: "0.8",
-              letterSpacing: "0.1em",
-              transition: " ease-in 1s",
-            }}
+        <div className="container mx-auto px-4 py-20 relative">
+          <div
+            ref={sliderRef}
+            className="inline-flex gap-8 px-4 whitespace-nowrap relative"
           >
-            WEB 3
-          </h2>
+            {repeatedProjects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
+            ))}
+          </div>
         </div>
-   <div className="container mx-auto px-4 py-20 relative">
-  <div 
-    ref={sliderRef}
-    className="inline-flex gap-8 px-4 whitespace-nowrap relative"
-   
-  >
-    {repeatedProjects.map((project, index) => (
-      <ProjectCard key={index} project={project} />
-    ))}
-  </div>
-</div>
       </div>
     </section>
   );
