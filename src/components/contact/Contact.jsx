@@ -80,7 +80,7 @@ export default function Contact() {
       className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white"
     >
       <div className="md:w-1/3 p-8 md:py-40 md:absolute md:h-screen  flex flex-col justify-start">
-        <h1 className="text-6xl md:text-7xl font-thin  mb-12 md:px-5 font-['robo']  ">
+        <h1 className="text-5xl md:text-7xl font-thin  mb-12 md:px-5 font-['robo']  ">
           CONTACT
         </h1>
         <div
@@ -185,7 +185,7 @@ export default function Contact() {
                 SUBMIT
               </button>
               {showThankYou && (
-                <div className="absolute md:bottom-10 md:left-4 tracking-widest md:px-4 py-1 text-green-500 ">
+                <div className="absolute md:bottom-10 md:left-4 tracking-widest md:px-4 p-1 text-green-500 ">
                   Thanks! We'll be in touch! ☺
                 </div>
               )}

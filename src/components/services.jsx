@@ -65,20 +65,16 @@ export default function Services() {
       );
     });
 
-    // style={{
-    //     fontFamily: "kungfu",
-    //     letterSpacing: "0.6em",
-    //   }}
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
 
   return (
     <div
       id="services"
-      className="skills-container bg-black text-white overflow-hidden"
+      className="skills-container  bg-black text-white overflow-hidden"
     >
       <div className="absolute inset-0 opacity-30">
-        {[...Array(50)].map((_, i) => (
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
             className="absolute h-0.5 w-0.5 rounded-full bg-[#ffff]"
@@ -91,9 +87,9 @@ export default function Services() {
         ))}
       </div>
       {[
-        "Briefing, Research and Conceptualization",
-        "Shooting and Creativity",
-        "Editing and Realization",
+        "Future-Ready Development & Project Execution",
+        "Advanced Technologies & UI/UX Expertise",
+        "Time Management & Client Collaboration",
       ].map((title, i) => (
         <div
           key={i}
@@ -101,47 +97,47 @@ export default function Services() {
           className="section py-16 border-t border-gray-800"
         >
           <div className="container mx-auto px-4 md:px-8 flex flex-col md:flex-row">
-            <div className="md:w-1/2 pr-0 md:pr-12">
-              <h2 className="text-4xl md:text-5xl font-light mb-6">{title}</h2>
-              <p className="text-lg opacity-80">
+            <div className="md:w-1/2  pr-0 md:pr-12">
+              <h2 className="text-3xl font-['objectsans'] md:px-5 text-gray-300 md:text-5xl font-light mb-6">{title}</h2>
+              <p className="text-lg text-gray-400 md:px-5 opacity-80">
                 {i === 0
-                  ? "Communication - my Client is my partner. I start by thoroughly researching your project, its goals, and target audience. Based on the gathered insights, I develop a unique concept and script that reflects your vision."
+                  ? "I specialize in designing and developing scalable web applications with a strong focus on both frontend and backend technologies. My expertise includes Java, JavaScript, React.js, Node.js, and MongoDB, ensuring performance-driven solutions."
                   : i === 1
-                  ? "I meticulously prepare for shoots, ensuring high-quality video footage. I work on capturing compelling shots that engage viewers and convey your message effectively."
-                  : "At this stage, I creatively piece together all elements to craft captivating videos. Special effects, editing, sound design — I do everything possible to make your video stand out."}
+                  ? "With a deep understanding of UI/UX principles, I integrate advanced libraries and frameworks such as React Query, Zustand, and GSAP to create seamless and interactive user experiences. My frontend development approach prioritizes flexibility and performance."
+                  : "Effective project planning, feature development, and client collaboration define my workflow. I excel in managing tasks efficiently, ensuring timely delivery while maintaining high-quality coding standards and best practices."}
               </p>
             </div>
-            <div className="md:w-1/2 mt-8 md:mt-0 flex flex-col">
-              <div className="phase text-xl md:text-2xl mb-6 opacity-70">
+            <div className="md:w-1/2 mt-8 md:mt-0 flex font-['robo'] flex-col">
+              <div className="phase text-xl md:text-2xl md:px-5 uppercase text-gray-100 mb-6 opacity-70">
                 {i === 0
-                  ? "Pre—idea"
+                  ? "Full-Stack Engineering"
                   : i === 1
-                  ? "Production—creation"
-                  : "Post—realization"}
+                  ? "UI/UX & Libraries"
+                  : "Agile Development"}
               </div>
-              <ul className="space-y-4 text-2xl md:text-3xl font-light italic">
+              <ul className="space-y-4 font-['objectsans'] md:px-5 text-xl text-gray-600 md:text-2xl font-light md:font-['PermanentMarker'] ">
                 {[
                   [
-                    "Project Goals",
-                    "Target Audience",
-                    "Budget",
-                    "Content Requirements",
-                    "Trends",
-                    "Visual concept — treatment",
-                    "Script",
-                    "Shooting plan",
+                    "React.js & Tailwind CSS",
+                    "Node.js & Express",
+                    "MongoDB & Firebase",
+                    "API Design & Integration",
+                    "Java & Spring Boot",
                   ],
-                  ["Filming"],
                   [
-                    "Video and sound editing",
-                    "Color correction and visual effects",
-                    "Adding titles and graphics",
+                    "State Management (Zustand, Redux)",
+                    "Performance Optimization",
+                    "GSAP & Animations",
+                    "Scalability & Maintainability",
+                  ],
+                  [
+                    "Agile & SCRUM Methodologies",
+                    "Client Understanding & Feature Planning",
+                    "Version Control (Git, GitHub)",
+                    "Time Management & Collaboration",
                   ],
                 ][i].map((item, j) => (
-                  <li
-                    key={j}
-                    ref={(el) => (listItemRefs.current[i * 8 + j] = el)}
-                  >
+                  <li key={j} ref={(el) => (listItemRefs.current[i * 8 + j] = el)}>
                     {item}
                   </li>
                 ))}
@@ -151,9 +147,9 @@ export default function Services() {
         </div>
       ))}
 
-      <div className="absolute  right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
         <span className="text-sm opacity-20 tracking-widest uppercase">
-          BPY _ Creation Portfolio 2025
+          BPY _ Development Portfolio 2025
         </span>
       </div>
 

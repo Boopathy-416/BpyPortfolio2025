@@ -122,9 +122,9 @@ export default function Footer() {
       <button
         ref={buttonRef}
         onClick={handleClick}
-        className="fixed md:bottom-4 bottom-8 right-8 overflow-hidden hover:border-2 border-2  border-black rounded-full bg-white px-3 py-2 text-black transition-transform hover:text-blue-950 hover:scale-105"
+        className="fixed md:bottom-4 bottom-5 hover:blur-none blur-sm right-8 overflow-hidden hover:border-4 border-4  border-black rounded-full bg-white px-3 py-2 text-black transition-transform hover:text-blue-950 hover:scale-105"
       >
-        <span className="relative z-10 flex items-center font-['robo']  text-sm  gap-2">
+        <span className="relative z-10 flex items-center font-['robot']  text-sm p-1  gap-2">
           Contact me <ArrowUpRight size={20} />
         </span>
         <div

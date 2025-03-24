@@ -58,7 +58,7 @@ export default function Testimonials() {
 
       const handleMouseEnter = () => {
         gsap.to(card, {
-          scale: 1.1,
+          scale: 0.8,
           duration: 0.5,
           zIndex: 10,
           ease: "power2.out",
@@ -67,7 +67,7 @@ export default function Testimonials() {
 
       const handleMouseLeave = () => {
         gsap.to(card, {
-          scale: 0.9,
+          scale: 0.8,
           duration: 0.5,
           zIndex: 1,
           ease: "power2.out",
@@ -86,13 +86,13 @@ export default function Testimonials() {
     return (
       <div
         ref={cardRef}
-        className="relative  flex-shrink-0 w-[250px] h-[300px] bg-black rounded-lg overflow-hidden  cursor-pointer"
+        className="relative  flex-shrink-0 w-[220px] h-[250px] bg-black rounded-xl overflow-hidden  cursor-pointer"
         onClick={() => window.open(project.link, "_blank")}
       >
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full p-1 border-4 rounded-lg object-cover"
+          className="w-full h-full p-1 border-4 rounded-xl object-cover" 
         />
         <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent  shadow-[0_0_20px_0_rgba(0,0,0,1)]">
           <h3 className="text-white text-xl font-bold">{project.title}</h3>
@@ -139,7 +139,7 @@ export default function Testimonials() {
         ref={containerRef}
         className="min-h-full md:p-20 bg-[#000] relative overflow-hidden"
       >
-        <div className="container mx-auto rounded-2xl md:shadow-xl md:shadow-white px-4 py-20 relative">
+        <div className="container mx-auto  py-10 px-40 relative">
           <div
             ref={sliderRef}
             className="inline-flex gap-8 px-4 whitespace-nowrap relative"

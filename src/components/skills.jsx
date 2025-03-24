@@ -90,7 +90,7 @@ export default function DrawingCanvas() {
   return (
     <div
       id="skills"
-      className="relative overflow-hidden h-screen w-full flex flex-col items-center justify-center bg-black"
+      className="relative overflow-hidden h-screen w-full flex flex-col px-4 items-center justify-center bg-black"
     >
       {/* Particle effect */}
       <div className="absolute inset-0 pointer-events-none">
@@ -108,7 +108,7 @@ export default function DrawingCanvas() {
       </div>
       {/* Top-left Image */}
 
-      <h1 className="md:text-5xl text-2xl text-center font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 border-y mb-2">
+      <h1 className="md:text-5xl text-2xl  text-center font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 opacity-80 mb-2">
         Showcase Your Talent
       </h1>
       <img
@@ -151,9 +151,9 @@ export default function DrawingCanvas() {
       {/* Canvas */}
       <canvas
         ref={canvasRef}
-        width={800}
-        height={500}
-        className="bg-white rounded-lg shadow-xl cursor-crosshair"
+        width={700}
+        height={400}
+        className="bg-gray-400 border-4  rounded-lg shadow-xl p-5 cursor-crosshair"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
@@ -161,29 +161,29 @@ export default function DrawingCanvas() {
       ></canvas>
 
       {/* Tools */}
-      <div className="absolute bottom-10 flex gap-4 bg-black p-4 rounded-full shadow-lg shadow-white">
+      <div className="absolute bottom-10 flex gap-4 bg-gradient-to-r border-4 border-black from-pink-500 via-yellow-500 to-blue-500 p-3 rounded-full shadow-lg shadow-slate-600">
         <button
           onClick={() => setColor("black")}
-          className="p-2 bg-gray-700 rounded-full"
+          className="p-2 bg-gray-200 rounded-full"
         >
-          <Pencil color="white" />
+          <Pencil color="black" />
         </button>
         <button
-          onClick={() => setColor("white")}
-          className="p-2 bg-gray-700 rounded-full"
+          onClick={() => setColor("black")}
+          className="p-2 bg-gray-200 rounded-full"
         >
-          <Eraser color="white" />
+          <Eraser color="black" />
         </button>
         <input
           type="color"
           onChange={(e) => setColor(e.target.value)}
           className="w-10 h-10 rounded-full cursor-pointer"
         />
-        <button onClick={saveCanvas} className="p-2 bg-gray-700 rounded-full">
-          <Save color="white" />
+        <button onClick={saveCanvas} className="p-2 bg-gray-200 rounded-full">
+          <Save color="black" />
         </button>
-        <button onClick={clearCanvas} className="p-2 bg-gray-700 rounded-full">
-          <Undo color="white" />
+        <button onClick={clearCanvas} className="p-2 bg-gray-200 rounded-full">
+          <Undo color="black" />
         </button>
       </div>
     </div>
