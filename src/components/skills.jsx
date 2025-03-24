@@ -108,7 +108,7 @@ export default function DrawingCanvas() {
       </div>
       {/* Top-left Image */}
 
-      <h1 className="md:text-5xl text-3xl font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 border-y mb-2">
+      <h1 className="md:text-5xl text-2xl text-center font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 border-y mb-2">
         Showcase Your Talent
       </h1>
       <img
