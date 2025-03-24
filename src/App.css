@@ -1,6 +1,13 @@
 *{
   box-sizing: border-box;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;  /* Prevents horizontal scroll */
+  scroll-behavior: smooth;
+  touch-action: manipulation; /* Stops unwanted scrolling */
+  user-select: none; /* Prevents accidental text selection */
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 

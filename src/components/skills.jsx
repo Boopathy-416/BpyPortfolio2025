@@ -153,7 +153,7 @@ export default function DrawingCanvas() {
         ref={canvasRef}
         width={700}
         height={400}
-        className="bg-gray-400 border-4 z-40  rounded-lg shadow-xl p-5 cursor-crosshair"
+        className="bg-white border-4 z-40  rounded-lg shadow-xl p-5 cursor-crosshair"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
@@ -161,7 +161,7 @@ export default function DrawingCanvas() {
       ></canvas>
 
       {/* Tools */}
-      <div className="absolute bottom-10 flex gap-4 bg-gradient-to-r border-4 border-black from-pink-500 via-yellow-500 to-blue-500 p-3 rounded-full shadow-lg shadow-slate-600">
+      <div className="absolute bottom-0 z-50 flex gap-4 bg-gradient-to-r border-4 border-black from-pink-500 via-yellow-500 to-blue-500 p-3 rounded-full mb-2 md:mb-0  md:shadow-lg md:shadow-slate-600">
         <button
           onClick={() => setColor("black")}
           className="p-2 bg-gray-200 rounded-full"
@@ -169,10 +169,10 @@ export default function DrawingCanvas() {
           <Pencil color="black" />
         </button>
         <button
-          onClick={() => setColor("black")}
+          onClick={() => setColor("white")}
           className="p-2 bg-gray-200 rounded-full"
         >
-          <Eraser color="black" />
+          <Eraser color="white" />
         </button>
         <input
           type="color"

@@ -46,7 +46,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className="fixed backdrop-blur-sm z-50 w-full bg-transparent px-6 py-4 border-b-2 border-gray-700 flex justify-between items-center">
+    <header className="fixed backdrop-blur-sm z-50 w-full bg-transparent px-6 py-4 md:border-b-2 border-gray-700 flex justify-between items-center">
       {/* Left - Year with Border Animation */}
       <div className="text-start">
         <span className="inline-block px-5 py-3 border-[#424242] text-gray-500 text-xs relative overflow-hidden group">
