@@ -153,7 +153,7 @@ export default function DrawingCanvas() {
         ref={canvasRef}
         width={700}
         height={400}
-        className="bg-gray-400 border-4  rounded-lg shadow-xl p-5 cursor-crosshair"
+        className="bg-gray-400 border-4 z-40  rounded-lg shadow-xl p-5 cursor-crosshair"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
