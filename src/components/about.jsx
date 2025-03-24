@@ -46,7 +46,7 @@ export default function About() {
             >
               Who I Am
             </h1>
-            <div className="space-y-4 text-[#d5d5d5]" style={{ fontFamily: "robo" }}>
+            <div className="space-y-4 text-[#d5d5d5] font-['robo'] ">
               <p className="text-sm first-line:uppercase leading-5 md:leading-7 tracking-normal first-line:tracking-wider
                 first-letter:text-7xl first-letter:font-bold first-letter:text-[#d5d5d5]
                 first-letter:mr-3 first-letter:float-left">
