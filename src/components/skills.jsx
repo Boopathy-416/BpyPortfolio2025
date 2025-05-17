@@ -1,190 +1,174 @@
-import { useRef, useState, useEffect } from "react";
-import { Save, Undo, Pencil, Eraser, Palette } from "lucide-react";
+// import {  useState, useEffect } from "react";
+
+
+// export default function DrawingCanvas() {
+
+//   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+//   useEffect(() => {
+//     const handleMouseMove = (e) => {
+//       setMousePosition({
+//         x: e.clientX / window.innerWidth,
+//         y: e.clientY / window.innerHeight,
+//       });
+//     };
+
+//     window.addEventListener("mousemove", handleMouseMove);
+//     return () => window.removeEventListener("mousemove", handleMouseMove);
+//   }, []);
+
+
+
+
+//   return (
+//     <div
+//       id="skills"
+//       className="relative overflow-hidden h-screen w-full flex flex-col px-4 items-center justify-center bg-black"
+//     >
+//       <div className="absolute inset-0 pointer-events-none">
+//         {[...Array(50)].map((_, i) => (
+//           <div
+//             key={i}
+//             className="absolute h-0.5 w-0.5 rounded-full bg-white opacity-50 animate-twinkle"
+//             style={{
+//               left: `${Math.random() * 100}%`,
+//               top: `${Math.random() * 100}%`,
+//               animationDuration: `${Math.random() * 5 + 3}s`,
+//             }}
+//           />
+//         ))}
+//       </div>
+
+     
+//     </div>
+//   );
+// }
+
+
+
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
-import catSound from "/assets/audio/woww.wav"; // Add your cat sound file
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register the ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Array of images as in your original code
+const images = [
+  "https://res.cloudinary.com/dpm3bum4n/image/upload/v1736053742/TJAR6336_mml2fk.jpg",
+  "https://res.cloudinary.com/dpm3bum4n/image/upload/v1736069181/works_hyhek0.jpg",
+  "https://res.cloudinary.com/dpm3bum4n/image/upload/v1736069181/wpalce_i8ykg8.jpg",
+  "https://res.cloudinary.com/dpm3bum4n/image/upload/v1736053728/work_5_zweihq.jpg",
+  "https://res.cloudinary.com/dpm3bum4n/image/upload/v1736053729/work_6_esbgwo.jpg",
+];
 
 export default function DrawingCanvas() {
-  const canvasRef = useRef(null);
-  const ctxRef = useRef(null);
-  const [drawing, setDrawing] = useState(false);
-  const [color, setColor] = useState("black");
-  const [lineWidth, setLineWidth] = useState(5);
-  const bubbleRef = useRef(null);
-  const audioRef = useRef(new Audio(catSound));
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
+  const itemsRef = useRef([]);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
-      });
-    };
+    if (!containerRef.current) return;
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    // 1. Get references to your items
+    const items = itemsRef.current;
 
-  useEffect(() => {
-    gsap.set(bubbleRef.current, { opacity: 0, scale: 0 });
+    // 2. Capture each item’s initial position
+    const positions = items.map((item) => {
+      const rect = item.getBoundingClientRect();
+      return { x: rect.left, y: rect.top };
+    });
 
-    const handleMouseEnter = () => {
-      gsap.to(bubbleRef.current, {
-        opacity: 1,
-        scale: 1,
-        duration: 0.5,
-        ease: "bounce.out",
-      });
-      audioRef.current.play();
-    };
+    // 3. Create a timeline with ScrollTrigger
+    const tl = gsap.timeline({
+      // Animation defaults
+      defaults: { duration: 2.5, ease: "power2.inOut" },
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 80%",       // when the top of container hits 80% of viewport
+        end: "bottom top",      // when the bottom of container hits top of viewport
+        toggleActions: "play none none reverse",
+        // You can use these callbacks for finer control, if desired:
+        // onEnter: () => { /* ... */ },
+        // onLeave: () => { /* ... */ },
+        // onEnterBack: () => { /* ... */ },
+        // onLeaveBack: () => { /* ... */ },
+      },
+    });
 
-    const handleMouseLeave = () => {
-      gsap.to(bubbleRef.current, { opacity: 0, scale: 0, duration: 0.3 });
-    };
+    // 4. Build the “puzzle-like” animation sequence
+    items.forEach((item, i) => {
+      const nextPos = positions[(i + 1) % positions.length];
+      tl.to(
+        item,
+        {
+          x: nextPos.x - positions[i].x,
+          y: nextPos.y - positions[i].y,
+          rotation: gsap.utils.random(-10, 10),
+          scale: gsap.utils.random(0.55, 1),
+        },
+        i * 0.1
+      );
+    });
 
-    const image = document.getElementById("hover-image");
-    image.addEventListener("mouseenter", handleMouseEnter);
-    image.addEventListener("mouseleave", handleMouseLeave);
-
+    // 5. Cleanup on unmount
     return () => {
-      image.removeEventListener("mouseenter", handleMouseEnter);
-      image.removeEventListener("mouseleave", handleMouseLeave);
+      tl.kill();
+    
+      if (tl.scrollTrigger) tl.scrollTrigger.kill();
     };
   }, []);
-
-  const startDrawing = (e) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    ctx.strokeStyle = color;
-    ctx.lineWidth = lineWidth;
-    ctx.lineCap = "round";
-    ctx.beginPath();
-    ctx.moveTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-    setDrawing(true);
-  };
-
-  const draw = (e) => {
-    if (!drawing) return;
-    const ctx = canvasRef.current.getContext("2d");
-    ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
-    ctx.stroke();
-  };
-
-  const stopDrawing = () => {
-    setDrawing(false);
-  };
-
-  const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  };
-
-  const saveCanvas = () => {
-    const link = document.createElement("a");
-    link.download = "drawing.png";
-    link.href = canvasRef.current.toDataURL();
-    link.click();
-  };
 
   return (
     <div
-      id="skills"
-      className="relative overflow-hidden h-screen w-full flex flex-col px-4 items-center justify-center bg-black"
+    id="skills"
+      className="min-h-screen overflow-hidden bg-black md:px-40 md:py-10 p-10"
+      ref={containerRef}
     >
-      {/* Particle effect */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[...Array(50)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute h-0.5 w-0.5 rounded-full bg-white opacity-50 animate-twinkle"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDuration: `${Math.random() * 5 + 3}s`,
-            }}
-          />
-        ))}
-      </div>
-      {/* Top-left Image */}
-
-      <h1 className="md:text-5xl text-2xl  text-center font-['robot'] text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 py-4 opacity-80 mb-2">
-        Showcase Your Talent
-      </h1>
-      <img
-        src="/assets/paint.svg"
-        alt="Top Left"
-        className="hidden md:block absolute top-5 left-5 w-20 h-20"
-      />
-
-      {/* Bottom-right Image */}
-
-      {/* Image */}
-      <img
-        id="hover-image"
-        src="https://media.giphy.com/media/wKFY1XaNEainm/giphy.gif"
-        alt="Bottom Right"
-        className="hidden md:block absolute bottom-5 right-5 w-40 h-50"
-      />
-
-      {/* Speech Bubble */}
       <div
-        ref={bubbleRef}
-        className="absolute bottom-1/3 right-5 bg-border-4 text-white p-3 rounded-lg shadow-lg flex items-center justify-center"
+        className="md:text-center text-start"
+        style={{
+          fontFamily: "kungfu",
+          letterSpacing: "0.6em",
+        }}
       >
-        <svg
-          width="100"
-          height="50"
-          viewBox="0 0 100 50"
-          className="absolute -bottom-3 right-2"
+        {/* hover:bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTN5dXhlZWJtY29uOHgwaW9oOTNycnBiM3F1eW45Mmx3b3E1bGM2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpFFhlNiBoZJWhdskD/giphy.webp')]  */}
+        <h1 className="md:text-[200px] p-5 border-3 md:mt-10 text-2xl font-bold text-[#e9e9e9] text-center">
+          GALLERY{" "}
+          <span className="text-sm text-gray-700 tracking-wide">
+            Work Experience
+          </span>
+        </h1>
+        <h2
+          className="md:text-xl text-center border-1 border text-sm hover:bg-[url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeTN5dXhlZWJtY29uOHgwaW9oOTNycnBiM3F1eW45Mmx3b3E1bGM2bSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NpFFhlNiBoZJWhdskD/giphy.webp')] hover:text-[#000] transition-all shadow-[0_10px_50px_rgba(255,255,255,0.5)] text-gray-400"
+          style={{
+            opacity: "0.8",
+            letterSpacing: "0.1em",
+            transition: " ease-in 1s",
+          }}
         >
-          <path
-            d="M10,50 Q50,-10 90,50"
-            fill="white"
-            stroke="black"
-            strokeWidth="2"
-          />
-        </svg>
-        <span className="text-sm font-bold">Woww Nice One!</span>
+          Memories
+        </h2>
       </div>
 
-      {/* Canvas */}
-      <canvas
-        ref={canvasRef}
-        width={700}
-        height={400}
-        className="bg-white border-4 z-40  rounded-lg shadow-xl p-5 cursor-crosshair"
-        onMouseDown={startDrawing}
-        onMouseMove={draw}
-        onMouseUp={stopDrawing}
-        onMouseOut={stopDrawing}
-      ></canvas>
-
-      {/* Tools */}
-      <div className="absolute bottom-0 z-50 flex gap-4 bg-gradient-to-r border-4 border-black from-pink-500 via-yellow-500 to-blue-500 p-3 rounded-full mb-2 md:mb-0  md:shadow-lg md:shadow-slate-600">
-        <button
-          onClick={() => setColor("black")}
-          className="p-2 bg-gray-200 rounded-full"
-        >
-          <Pencil color="black" />
-        </button>
-        <button
-          onClick={() => setColor("white")}
-          className="p-2 bg-gray-200 rounded-full"
-        >
-          <Eraser color="white" />
-        </button>
-        <input
-          type="color"
-          onChange={(e) => setColor(e.target.value)}
-          className="w-10 h-10 rounded-full cursor-pointer"
-        />
-        <button onClick={saveCanvas} className="p-2 bg-gray-200 rounded-full">
-          <Save color="black" />
-        </button>
-        <button onClick={clearCanvas} className="p-2 bg-gray-200 rounded-full">
-          <Undo color="black" />
-        </button>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5 md:py-10 md:px-40 relative">
+        {images.map((src, index) => (
+          <div
+            key={index}
+            ref={(el) => {
+              if (el) itemsRef.current[index] = el;
+            }}
+            className="relative overflow-hidden transition-transform border-1 duration-300 hover:z-10 hover:scale-105"
+          >
+            <div className="aspect-[4/3] relative border-4 rounded-md border-zinc-300 hover:border-[#fefefe] shadow-[0_10px_50px_rgba(255,255,255,0.5)]">
+              <img
+                src={src}
+                alt={`Gallery item ${index + 1}`}
+                className="absolute inset-0 w-full h-full object-cover filter grayscale hover:backdrop-grayscale-0 transition-all duration-500"
+              />
+              <div className="absolute inset-0 bg-black/30 hover:bg-black/0 transition-opacity duration-300" />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

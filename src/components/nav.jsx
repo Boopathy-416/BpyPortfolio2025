@@ -24,8 +24,8 @@ export default function Navbar() {
     { id: "about", label: "About" },
     { id: "testimonials", label: "Testimonials" },
     { id: "services", label: "Services" },
-    { id: "skills", label: "Skills" },
     { id: "contact", label: "Let Us Talk" },
+    { id: "skills", label: "Work" },
   ];
 
   useEffect(() => {

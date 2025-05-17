@@ -7,20 +7,20 @@ import Hero from "./components/hero.jsx";
 import Services from "./components/services.jsx";
 import Navbar from "./components/nav.jsx";
 import Contact from "./components/contact/Contact.jsx";
-import Portfolio from "./components/project/Portfolio.jsx";
+import Portfolio from "./components/Project-Section/Portfolio.jsx"
 
 function App() {
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar /> 
         <Hero />
         <About />
         <Portfolio />
         <Testimonials />
         <Services />
-        <Skills />
         <Contact />
+        <Skills />
         <Footer />
       </Router>
     </>

@@ -1,9 +1,8 @@
-import React from "react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useState } from "react";
 import "../../App.css";
+import { submitContactForm } from "../../api";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -14,7 +13,46 @@ export default function Contact() {
   const formFieldsRef = useRef([]);
   const servicesRef = useRef(null);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  // ✅ State to store form data
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    company: "",
+    socialLink: "",
+  });
+
+// bg ui
+
+    useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({
+        x: e.clientX / window.innerWidth,
+        y: e.clientY / window.innerHeight,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+
+  // ✅ State for selected services
+  const [selectedServices, setSelectedServices] = useState([]);
+
+  const services = [
+    "PORTFOLIO WEBSITE",
+    "BRANDING",
+    "LINKEDIN PROFILE SETUP",
+    "WEB DESIGN",
+    "MERN STACK DEVLOPMENT",
+    "UI/UX",
+    "SOCIAL MEDIA MAINTENANCE",
+  ];
+
+  // ✅ Animation on scroll
   useEffect(() => {
     const ctx = gsap.context(() => {
       formFieldsRef.current.forEach((field, index) => {
@@ -68,10 +106,50 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e) => {
+  // ✅ Form value change handler
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // ✅ Service checkbox change
+  const handleServiceChange = (e) => {
+    const { value, checked } = e.target;
+    if (checked) {
+      setSelectedServices((prev) => [...prev, value]);
+    } else {
+      setSelectedServices((prev) => prev.filter((s) => s !== value));
+    }
+  };
+
+  // inside component
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowThankYou(true);
-    setTimeout(() => setShowThankYou(false), 3000);
+    const finalData = {
+      ...formData,
+      services: selectedServices,
+    };
+
+    try {
+      const result = await submitContactForm(finalData);
+      console.log("Server Response:", result);
+
+      setShowThankYou(true);
+      setTimeout(() => setShowThankYou(false), 10000);
+
+      // Optional: reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        company: "",
+        socialLink: "",
+      });
+      setSelectedServices([]);
+    } catch (err) {
+      console.error("Form submission failed", err);
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -79,6 +157,19 @@ export default function Contact() {
       id="contact"
       className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white"
     >
+            <div className="absolute inset-0 pointer-events-none">
+        {[...Array(50)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute h-0.5 w-0.5 rounded-full bg-white opacity-50 animate-twinkle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDuration: `${Math.random() * 5 + 1}s`,
+            }}
+          />
+        ))}
+      </div>
       <div className="md:w-1/3 p-8 md:py-40 md:absolute md:h-screen  flex flex-col justify-start">
         <h1 className="text-5xl md:text-7xl font-thin  mb-12 md:px-5 font-['robo']  ">
           CONTACT
@@ -105,11 +196,13 @@ export default function Contact() {
           <div class="  overflow-auto flex  items-center justify-center shadow-lg">
             <p
               class="text-sm sm:text-base px-2 hover:bg-[#222222] tracking-widest font-['PermanentMarker'] md:text-start "
-
-            style={{
-              textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-            }}>
-              <h5 className="font-black w-1/2 flex  justify-center mx-20 my-2 items-center border-y-4 text-center">Work together</h5>
+              style={{
+                textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
+              }}
+            >
+              <h5 className="font-black w-1/2 flex  justify-center mx-20 my-2 items-center border-y-4 text-center">
+                Work together
+              </h5>
               Whether you're a fresh startup ready to shape your identity or an
               established brand looking for a digital revamp, we'd love to dive
               into your story. With over best years of experience in web design,
@@ -121,72 +214,101 @@ export default function Contact() {
           </div>
         </div>
       </div>
-
       <div className="md:w-2/3 md:ml-[44.333%] p-8 md:p-16">
-        <div ref={formContainerRef} className="max-w-3xl ">
-          <h2 className="text-3xl font-['robot'] md:text-2xl md:py-4  font-bold mb-4">
+        <div ref={formContainerRef} className="max-w-3xl">
+          <h2 className="text-3xl font-['robot'] md:text-2xl md:py-4 font-bold mb-4">
             LET US KNOW WHAT YOU'RE LOOKING FOR →<br /> AND WE'LL BE IN TOUCH. ☺
           </h2>
-          <form onSubmit={handleSubmit} className="space-y-10 font-['robo'] ">
-            {[
-              "FIRST & LAST NAME",
-              "EMAIL",
-              "PHONE NUMBER",
-              "COMPANY NAME",
-              "LINK TO YOUR SOCIAL ACCOUNT",
-            ].map((placeholder, index) => (
-              <div key={index} ref={addToFieldRefs} className="form-field">
-                <input
-                  type="text"
-                  className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
-                  placeholder={placeholder}
-                />
-              </div>
-            ))}
-            <div
-              ref={servicesRef}
-              className="mt-16 font-['robo'] "
-              style={{
-                textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-              }}
-            >
+
+          <form onSubmit={handleSubmit} className="space-y-10 font-['robo']">
+            <div ref={addToFieldRefs}>
+              <input
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="FIRST & LAST NAME"
+                className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+              />
+            </div>
+
+            <div ref={addToFieldRefs}>
+              <input
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                type="email"
+                placeholder="EMAIL"
+                className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+              />
+            </div>
+
+            <div ref={addToFieldRefs}>
+              <input
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="PHONE NUMBER"
+                className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+              />
+            </div>
+
+            <div ref={addToFieldRefs}>
+              <input
+                name="company"
+                value={formData.company}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="COMPANY NAME"
+                className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+              />
+            </div>
+
+            <div ref={addToFieldRefs}>
+              <input
+                name="socialLink"
+                value={formData.socialLink}
+                onChange={handleInputChange}
+                type="text"
+                placeholder="LINK TO YOUR SOCIAL ACCOUNT"
+                className="w-full bg-transparent text-sm border-b text-[#aef45d] capitalize border-white/50 py-2 focus:outline-none focus:border-green-400 transition-colors"
+              />
+            </div>
+
+            {/* ✅ Services Checkboxes */}
+            <div ref={servicesRef} className="mt-16 font-['robo']">
               <h3 className="text-2xl font-bold mb-6">SERVICES NEEDED</h3>
               <div className="grid text-xs grid-cols-1 md:grid-cols-2 gap-4">
-                {[
-                  "BRANDING",
-                  "WEB DESIGN",
-                  "SOCIAL MEDIA MANAGEMENT",
-                  "MARKETING",
-                  "CREATIVE DIRECTION",
-                  "UIUX",
-                ].map((service, index) => (
-                  <div
+                {services.map((service, index) => (
+                  <label
                     key={index}
                     className="service-item text-xs flex items-center gap-3"
                   >
-                    <div className="w-5 h-5 border border-white label:green-400 flex items-center justify-center">
-                      <input type="checkbox"  id={service} />
-                    </div>
+                    <input
+                      type="checkbox"
+                      value={service}
+                      onChange={handleServiceChange}
+                      className="accent-green-400"
+                    />
                     <span>{service}</span>
-                  </div>
+                  </label>
                 ))}
               </div>
             </div>
-            <div
-              className="pt-8 font-['robo'] "
-              style={{
-                textShadow: "2px 2px 10px rgba(0, 0, 0, 0.8)",
-              }}
-            >
+
+            {/* ✅ Submit Button */}
+            <div className="pt-8 font-['robo']">
               <button
                 type="submit"
-                className="px-8 py-3 bg-white text-xs md:text-sm text-black font-semibold  hover:bg-gray-200 transition-colors"
+                className="px-8 py-3 bg-white text-xs md:text-sm text-black font-semibold hover:bg-gray-200 transition-colors"
               >
                 SUBMIT
               </button>
               {showThankYou && (
-                <div className="absolute md:bottom-10 md:left-4 tracking-widest md:px-4 p-1 text-green-500 ">
-                  Thanks! We'll be in touch! ☺
+                <div className="absolute text-xs md:bottom-10 md:left-4 tracking-widest md:px-4 p-1 text-green-500">
+                  <b className="text-xl font-light ">M</b>essage sent! We’ve
+                  received your details via email.
                 </div>
               )}
             </div>
