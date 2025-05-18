@@ -8,6 +8,7 @@ import Services from "./components/services.jsx";
 import Navbar from "./components/nav.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import Portfolio from "./components/Project-Section/Portfolio.jsx"
+import Home from "./components/Project-Section/Page.jsx";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
         <Navbar /> 
         <Hero />
         <About />
-        <Portfolio />
+        {/* <Portfolio /> */}
+        <Home />
         <Testimonials />
         <Services />
         <Contact />
