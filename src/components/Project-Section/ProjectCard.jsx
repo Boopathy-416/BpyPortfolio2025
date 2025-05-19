@@ -23,7 +23,7 @@ export default function ProjectCard({ item }) {
     tl.to(
       title,
       {
-        scale: 1.2,
+        scale: 1.02,
         y: -10,
         duration: 0.5,
         ease: "power2.out",
@@ -50,6 +50,7 @@ export default function ProjectCard({ item }) {
       style={{
         transformStyle: "preserve-3d",
         perspective: "1000px",
+    
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -61,15 +62,18 @@ export default function ProjectCard({ item }) {
         <div className="mb-auto">
           <h3
             ref={titleRef}
-            className="text-xl md:text-2xl font-bold mb-2 origin-left"
+            className="text-md uppercase md:text-xl tracking-wide font-bold mb-2 origin-left"
           >
             {item.title}
           </h3>
-          <p className="text-gray-400 mb-4">{item.description}</p>
+          <p className="text-gray-400 text-xs leading-normal tracking-wider   mb-4"
+          style={{
+            fontFamily:"objectsans"
+          }}>{item.description}</p>
         </div>
 
         <div className="mt-4">
-          <div className="inline-block px-3 py-1 rounded-full bg-white/10 text-sm">
+          <div className="inline-block px-3 py-1 rounded-full bg-white/10 text-green-400 text-sm">
             {item.timeline}
           </div>
         </div>
@@ -80,7 +84,7 @@ export default function ProjectCard({ item }) {
         <img
           src={item.image || "/placeholder.svg"}
           alt={item.title}
-          className="object-cover w-full h-full"
+          className="object-contain w-full h-full"
           style={{ objectFit: "cover" }}
         />
       </div>

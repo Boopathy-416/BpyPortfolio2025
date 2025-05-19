@@ -125,7 +125,7 @@ export default function Footer() {
         className="fixed md:bottom-4 bottom-5 hover:blur-none blur-sm right-8 overflow-hidden hover:border-4 border-4  border-black rounded-full bg-white px-3 py-2 text-black transition-transform hover:text-blue-950 hover:scale-105"
       >
         <span className="relative z-10 flex items-center font-['robot']  text-sm p-1  gap-2">
-          Contact me <ArrowUpRight size={20} />
+        <a href="#contact" > Contact me <ArrowUpRight className="inline " size={20} /> </a>
         </span>
         <div
           ref={liquidRef}
@@ -135,7 +135,7 @@ export default function Footer() {
       </button>
 
       {showThankYou && (
-        <div className="thank-you fixed bottom-20  font-['robot'] right-8 flex items-center gap-2 rounded-full fond-bold  shadow-black shadow-inner px-6 py-3 text-white opacity-0 scale-0">
+        <div className="thank-you fixed bottom-20  font-['robot'] right-5 flex items-center gap-2 rounded-full fond-bold  shadow-black shadow-inner px-6 py-3 text-white opacity-0 scale-0">
           Thank you! <SmileIcon size={20} />
         </div>
       )}

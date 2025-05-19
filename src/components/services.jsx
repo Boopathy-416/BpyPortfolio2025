@@ -122,7 +122,6 @@ export default function Services() {
                     "Node.js & Express",
                     "MongoDB & Firebase",
                     "API Design & Integration",
-                    "Java & Spring Boot",
                   ],
                   [
                     "State Management (Zustand, Redux)",
@@ -131,7 +130,6 @@ export default function Services() {
                     "Scalability & Maintainability",
                   ],
                   [
-                    "Agile & SCRUM Methodologies",
                     "Client Understanding & Feature Planning",
                     "Version Control (Git, GitHub)",
                     "Time Management & Collaboration",

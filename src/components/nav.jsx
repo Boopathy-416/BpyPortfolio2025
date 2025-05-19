@@ -108,7 +108,7 @@ export default function Navbar() {
       {/* Right - Get in Touch Button */}
       <div className="hidden lg:block">
         <a
-          href="#footer"
+          href="#contact"
           className="relative text-white text-xs px-6 py-3 border-[#424242] uppercase font-bold transition-all duration-500 ease-in-out overflow-hidden group"
         >
           GET IN TOUCH
