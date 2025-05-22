@@ -10,7 +10,7 @@ export const submitContactForm = async (data) => {
       },
       body: JSON.stringify(data),
     });
-
+console.log("API BASE URL:", BASE_URL);
     const result = await response.json();
     return result;
   } catch (error) {
