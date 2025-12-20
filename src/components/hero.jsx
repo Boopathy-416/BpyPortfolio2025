@@ -74,6 +74,9 @@ function Hero() {
                 backgroundImage: "url('/public/assets/div.png')",
               }}
             ></div>
+            {/* <div className="sketchfab-embed-wrapper"> <iframe title="Golden Coin Emblem" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e8bccd3e6a2b4b91844a55a7986f27dc/embed?preload=1&transparent=1"> </iframe>
+             <p style={{ fontSize: "13px", fontWeight: "normal", margin: "5px", color: "#4A4A4A" }}> <a href="https://sketchfab.com/3d-models/golden-coin-emblem-e8bccd3e6a2b4b91844a55a7986f27dc?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}> Golden Coin Emblem </a> by <a href="https://sketchfab.com/boopathy1865?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}> boopathy1865 </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}>Sketchfab</a></p>
+             </div> */}
 
             {/* Creative Designer text */}
             <div className="absolute -right-2 top-0 w-32 h-32">
@@ -91,7 +94,15 @@ function Hero() {
                   <textPath href="#curve" startOffset="0%">
                     CREATIVE DESIGNER
                   </textPath>
-                </text>
+                </text>close
+                c
+                r
+                e
+                a
+                t
+                i
+                v
+                e
               </svg>
             </div>
           </div>
@@ -107,7 +118,7 @@ function Hero() {
               | Passionate about UI/UX | Let's connect!
             </h2>
             <p className="mt-2 text-xs  hover:text-white/80">
-              7.1.2025 last Updated
+              28.12.2025 last Updated
             </p>
           </div>
         </main>

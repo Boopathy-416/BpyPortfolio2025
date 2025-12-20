@@ -22,7 +22,7 @@ function App() {
         <Testimonials />
         <Services />
         <Contact />
-        <Skills />
+        {/* <Skills /> */}
         <Footer />
       </Router>
     </>

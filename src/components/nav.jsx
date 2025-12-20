@@ -2,22 +2,17 @@ import React, { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Menu, X } from "lucide-react"; // Import icons
-import clickSound from "/assets/audio/navmusic.wav"; // Import sound file
+
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
   const currentYear = new Date().getFullYear();
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    if (activeSection) {
-      const audio = new Audio(clickSound);
-      audio.play();
-    }
-  }, [activeSection]); // Runs when activeSection changes
+
 
   const sections = [
     { id: "hero", label: "Home" },
@@ -49,12 +44,12 @@ export default function Navbar() {
     <header className="fixed backdrop-blur-sm z-50 w-full bg-transparent px-6 py-4 md:border-b-2 border-gray-700 flex justify-between items-center">
       {/* Left - Year with Border Animation */}
       <div className="text-start">
-        <span className="inline-block px-5 py-3 border-[#424242] text-gray-500 text-xs relative overflow-hidden group">
+        <span className="inline-block px-5 py-3 border-[#424242] text-gray-500 text-xs rounded-full relative overflow-hidden group">
           {currentYear}-{currentYear + 1}
-          <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className=" absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className=" absolute top-0 right-0 w-[2px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className=" absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className=" absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
         </span>
       </div>
 
@@ -82,22 +77,22 @@ export default function Navbar() {
 
             {/* Camera Shutter Borders */}
             <span
-              className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform ${
+              className={` absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform ${
                 activeSection === section.id ? "scale-x-100 " : "scale-x-0  "
               } origin-right transition-transform duration-300`}
             ></span>
             <span
-              className={`absolute top-0 right-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform ${
+              className={` absolute top-0 right-0 w-[6px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform ${
                 activeSection === section.id ? "scale-y-100" : "scale-y-0"
               } origin-bottom transition-transform duration-300`}
             ></span>
             <span
-              className={`absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform ${
+              className={` absolute bottom-0 right-0 w-full h-[1px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform ${
                 activeSection === section.id ? "scale-x-100" : "scale-x-0"
               } origin-left transition-transform duration-300`}
             ></span>
             <span
-              className={`absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform ${
+              className={` absolute bottom-0 left-0 w-[6px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform ${
                 activeSection === section.id ? "scale-y-100" : "scale-y-0"
               } origin-top transition-transform duration-300`}
             ></span>
@@ -112,10 +107,10 @@ export default function Navbar() {
           className="relative text-white text-xs px-6 py-3 border-[#424242] uppercase font-bold transition-all duration-500 ease-in-out overflow-hidden group"
         >
           GET IN TOUCH
-          <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
-          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
-          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-r from-pink-500 via-yellow-500 to-blue-500 transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-x-0 origin-right transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-y-0 origin-bottom transition-transform duration-300 group-hover:scale-y-100"></span>
+          <span className="absolute bottom-0 right-0 w-full h-[2px] bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+          <span className="absolute bottom-0 left-0 w-[2px] h-full bg-gradient-to-r from-pink-100 via-yellow-200 to-blue-800 transform scale-y-0 origin-top transition-transform duration-300 group-hover:scale-y-100"></span>
         </a>
       </div>
 
