@@ -12,7 +12,7 @@ export default function Navbar() {
     { id: "testimonials", icon: "public/assets/Product.svg", size: 90 },
     { id: "services", icon: "public/assets/Solid.svg", size: 90 },
     { id: "contact", icon: "public/assets/Touch.svg", size: 90 },
-    // { id: "skills", icon: "public/2025 Assets/earth.svg", size: 40 },
+
   ];
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import MarqueeTitle from "./Title";
 
 function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -49,11 +50,11 @@ function Hero() {
             <img
               src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1765423407/ok_1_coin_fwkwh2.png"
               alt="Bpy Creations"
-              className="w-[500px] h-auto shadow-[0_0px_80px_rgba(186,135,54,0.45)]"
+              className="w-[500px] h-auto shadow-[80px_10px_80px_rgba(186,135,54,0.45)]"
             />
           </div>
 
-          <div className="  flex flex-col items-center justify-center mt-10 mr-8 relative">
+          {/* <div className="  flex flex-col items-center justify-center mt-10 mr-8 relative">
             <h1
               className="text-[clamp(3rem,15vw,8rem)]   rounded-md drop-shadow-sm bg-gradient-to-r from-[#8f5f1f] via-[#ba8736] to-[#f2c46d]
             shadow-[0_10px_80px_rgba(186,135,54,0.45)] hidden md:block   border-[#503811]  bg-no-repeat leading-none font-black text-center"
@@ -74,7 +75,7 @@ function Hero() {
               }}
             ></div>
 
-            {/* Creative Designer text */}
+
             <div className="absolute -right-2 top-0 w-32 h-32">
               <svg
                 viewBox="0 0 100 100"
@@ -94,7 +95,9 @@ function Hero() {
                
               </svg>
             </div>
-          </div>
+          </div> */}
+
+          <MarqueeTitle />
 
           <div
             className="absolute bottom-20 md:bottom-20 transition-all right-[42px]   max-w-xs rounded hover:text-black hover:bg-[#ececec] bg-black  text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
