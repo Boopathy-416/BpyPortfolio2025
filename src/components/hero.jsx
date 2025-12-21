@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
 function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const items = ["UI/UX", "Branding", "Web development", "Logo Motion"];
@@ -19,9 +18,7 @@ function Hero() {
 
   return (
     <section id="hero">
-      <div className="relative min-h-screen w-full overflow-hidden bg-black">
-        {/* Particle effect */}
-        
+      <div className="relative bg-black bg-contain  bg-no-repeat min-h-screen w-full overflow-hidden ">
         <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
             <div
@@ -36,7 +33,6 @@ function Hero() {
           ))}
         </div>
 
-        {/* Spotlight effect */}
         <div
           className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-gradient-radial from-[#ffffff10] to-transparent opacity-20"
           style={{
@@ -47,36 +43,36 @@ function Hero() {
           }}
         />
 
-        {/* Portfolio heading with glow effect */}
+        <main className="relative flex min-h-screen  flex-col-2 items-center justify-between  px-4">
 
-        {/* Main content */}
-        <main className="relative flex min-h-screen flex-col items-center justify-center px-4">
-          {/* Bottom badges */}
-          <div className="relative  ">
+          <div className="flex items-center justify-center  pt-10">
+            <img
+              src="/assets/BpyCreations.svg"
+              alt="Bpy Creations"
+              className="w-full h-auto shadow-[0_0px_80px_rgba(186,135,54,0.45)]"
+            />
+          </div>
+
+          <div className="  flex flex-col items-center justify-center mt-10 mr-8 relative">
             <h1
-              className="text-[clamp(3rem,15vw,8rem)] hidden md:block  drop-shadow-sm shadow-[0_10px_50px_rgba(255,255,255,0.5)] bg-no-repeat leading-none font-black text-center"
+              className="text-[clamp(3rem,15vw,8rem)]   rounded-md drop-shadow-sm bg-gradient-to-r from-[#8f5f1f] via-[#ba8736] to-[#f2c46d]
+            shadow-[0_10px_80px_rgba(186,135,54,0.45)] hidden md:block   border-[#503811]  bg-no-repeat leading-none font-black text-center"
               style={{
-                padding: "5rem",
-                backgroundImage:
-                  "url('https://res.cloudinary.com/dpm3bum4n/image/upload/v1736656258/IMG_4511_scmegg.jpg')",
+                padding: "4rem",
                 fontFamily: "objectsans",
-                opacity: "0.7",
-                color: "transparent", // Make text transparent to show only stroke
-                WebkitTextStroke: "0.5px white", // White outline effect
+                color: "transparent",
+                WebkitTextStroke: "8px black",
               }}
             >
-              Bpy Creation
+              Bpy Creations
             </h1>
-            {/* Green glow effect */}
+
             <div
-              className="absolute -right-1 top-0 w-24 h-24 bg-[#ececec] blur-[100px] opacity-90"
+              className="absolute -right-1 top-0 w-24 h-44 bg-[#f2c46d] blur-[100px] opacity-90"
               style={{
-                backgroundImage: "url('/public/assets/div.png')",
+                filter: "blur(100px)",
               }}
             ></div>
-            {/* <div className="sketchfab-embed-wrapper"> <iframe title="Golden Coin Emblem" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/e8bccd3e6a2b4b91844a55a7986f27dc/embed?preload=1&transparent=1"> </iframe>
-             <p style={{ fontSize: "13px", fontWeight: "normal", margin: "5px", color: "#4A4A4A" }}> <a href="https://sketchfab.com/3d-models/golden-coin-emblem-e8bccd3e6a2b4b91844a55a7986f27dc?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}> Golden Coin Emblem </a> by <a href="https://sketchfab.com/boopathy1865?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}> boopathy1865 </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e8bccd3e6a2b4b91844a55a7986f27dc" target="_blank" rel="nofollow" style={{ fontWeight: "bold", color: "#1CAAD9" }}>Sketchfab</a></p>
-             </div> */}
 
             {/* Creative Designer text */}
             <div className="absolute -right-2 top-0 w-32 h-32">
@@ -94,31 +90,24 @@ function Hero() {
                   <textPath href="#curve" startOffset="0%">
                     CREATIVE DESIGNER
                   </textPath>
-                </text>close
-                c
-                r
-                e
-                a
-                t
-                i
-                v
-                e
+                </text>
+               
               </svg>
             </div>
           </div>
 
           <div
-            className="absolute bottom-20 md:bottom-20 transition-all right-10   max-w-xs rounded hover:text-black hover:bg-[#ececec] bg-black  text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
+            className="absolute bottom-20 md:bottom-20 transition-all right-[42px]   max-w-xs rounded hover:text-black hover:bg-[#ececec] bg-black  text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
             style={{
               transition: " ease-in 1s",
             }}
           >
             <h2 className="text-xs md:text-sm font-bold">
-              Open to work | MERN Stack Developer | Frontend & Backend Expertise
-              | Passionate about UI/UX | Let's connect!
+              Open to work | MERN Stack Developer | Graphics Designer |
+              Passionate about UI/UX | Let's connect!
             </h2>
             <p className="mt-2 text-xs  hover:text-white/80">
-              28.12.2025 last Updated
+              28.1.2025 last Updated
             </p>
           </div>
         </main>

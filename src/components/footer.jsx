@@ -59,11 +59,15 @@ export default function Footer() {
       },
     });
   };
+  //  style={{ backgroundImage: "url('public/2025 Assets/footer.svg')" }}
 
   return (
-    <footer className="relative opacity-90 w-full bg-[#B7FA00] px-4 py-5 md:px-8 lg:px-16">
-      <div className="mx-auto max-w-8xl py-4 border-t border-black md:items-start md:justify-start   flex justify-center items-center">
-        <p className=" text-xs text-center  uppercase font-semibold tracking-wider">
+    <> 
+    <footer
+      style={{ backgroundImage: "url('public/2025 Assets/footer.svg')" }}
+      className="relative  bg-black  w-full bg-center  bg-contain bg-no-repeat  px-4 py-5 md:px-8 lg:px-16">
+      <div className="mx-auto max-w-8xl py-4   md:items-start md:justify-start   flex justify-center items-center">
+        <p className=" text-xs text-center text-white/60  uppercase font-semibold tracking-wider">
           website by - Boopathy E
         </p>
       </div>
@@ -84,7 +88,7 @@ export default function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="transition-all duration-300 hover:blur-none border-blur-xs hover:scale-110"
+              className="transition-all text-gray-700 hover:text-[#ffff] duration-300 ease-in-out hover:blur-none border-blur-xs  hover:-translate-y-2"
             >
               <Icon size={24} />
             </a>
@@ -106,10 +110,10 @@ export default function Footer() {
           </div>
         </div>
       <div className="mt-2 border-t border-black pt-4 text-center font-[PermanentMarker]">
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-500 text-md">
           © {new Date().getFullYear()} Boopathy-Portfolio. All rights reserved.
         </p>
-        <p className="text-gray-500 text-xs">
+        <p className="text-gray-500 text-md">
           <a href="/privacy-policy" className="hover:text-white">
             Privacy Policy
           </a>{" "}
@@ -117,28 +121,31 @@ export default function Footer() {
           <a href="/terms-of-service" className="hover:text-white">
             Terms of Service
           </a>
-        </p>
+        </p>-+
       </div>
       <button
         ref={buttonRef}
         onClick={handleClick}
-        className="fixed md:bottom-4 bottom-5 hover:blur-none blur-sm right-8 overflow-hidden hover:border-4 border-4  border-black rounded-full bg-white px-3 py-2 text-black transition-transform hover:text-blue-950 hover:scale-105"
+        className="fixed md:bottom-2 bottom-5  right-4 overflow-hidden hover:border-4 border-4 
+         border-black rounded-full bg-white/40 px-3 py-2 hover:text-white hover:border-white hover:bg-transparent  transition-transform  hover:scale-105"
       >
-        <span className="relative z-10 flex items-center font-['robot']  text-sm p-1  gap-2">
-        <a href="#contact" > Contact me <ArrowUpRight className="inline " size={20} /> </a>
+        <span className="relative z-10 flex  items-center transition-transform font-['robot']  text-md p-1  gap-2">
+        <a href="#contact" > Contact me <ArrowUpRight className="inline text-[#dd9716]" size={16} /> </a>
         </span>
         <div
           ref={liquidRef}
-          className="absolute left-0 top-0 h-32 w-32 border-separate border-4 bg-[#a8cd14]"
+          className="absolute left-0 top-0 h-32 w-32 border-separate border-4 bg-[#dd9716]"
           style={{ pointerEvents: "none" }}
         />
       </button>
 
       {showThankYou && (
-        <div className="thank-you fixed bottom-20  font-['robot'] right-5 flex items-center gap-2 rounded-full fond-bold  shadow-black shadow-inner px-6 py-3 text-white opacity-0 scale-0">
+        <div className="thank-you fixed bottom-20  font-['robot'] right-5 flex items-center gap-2 rounded-full fond-bold 
+         shadow-black shadow-inner px-6 py-3 text-white opacity-0 scale-0">
           Thank you! <SmileIcon size={20} />
         </div>
       )}
     </footer>
+     </>
   );
 }

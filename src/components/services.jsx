@@ -145,7 +145,7 @@ export default function Services() {
         </div>
       ))}
 
-      <div className="absolute right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
+      <div className="fixed right-8 top-1/2 -translate-y-1/2 z-80 -rotate-90 origin-right">
         <span className="text-sm opacity-20 tracking-widest uppercase">
           BPY _ Development Portfolio 2025
         </span>
