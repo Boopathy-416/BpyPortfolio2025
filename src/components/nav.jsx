@@ -7,11 +7,11 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const sections = [
-    { id: "hero", icon: "public/assets/2025 Assets/Home.svg", size: 90 },
-    { id: "about", icon: "public/assets/2025 Assets/About.svg", size: 90 },
-    { id: "testimonials", icon: "public/assets/2025 Assets/Product.svg", size: 90 },
-    { id: "services", icon: "public/assets/2025 Assets/Solid.svg", size: 90 },
-    { id: "contact", icon: "public/assets/2025 Assets/Touch.svg", size: 90 },
+    { id: "hero", icon: "public/assets/Home.svg", size: 90 },
+    { id: "about", icon: "public/assets/About.svg", size: 90 },
+    { id: "testimonials", icon: "public/assets/Product.svg", size: 90 },
+    { id: "services", icon: "public/assets/Solid.svg", size: 90 },
+    { id: "contact", icon: "public/assets/Touch.svg", size: 90 },
     // { id: "skills", icon: "public/2025 Assets/earth.svg", size: 40 },
   ];
 

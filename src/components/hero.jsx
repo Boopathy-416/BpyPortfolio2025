@@ -45,11 +45,11 @@ function Hero() {
 
         <main className="relative flex min-h-screen  flex-col-2 items-center justify-between  px-4">
 
-          <div className="flex items-center justify-center  pt-10">
+          <div className="flex items-center justify-center pl-6  pt-10">
             <img
-              src="/assets/BpyCreations.svg"
+              src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1765423407/ok_1_coin_fwkwh2.png"
               alt="Bpy Creations"
-              className="w-full h-auto shadow-[0_0px_80px_rgba(186,135,54,0.45)]"
+              className="w-[500px] h-auto shadow-[0_0px_80px_rgba(186,135,54,0.45)]"
             />
           </div>
 
