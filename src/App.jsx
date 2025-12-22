@@ -6,7 +6,7 @@ import Hero from "./components/hero.jsx";
 import Services from "./components/services.jsx";
 import Navbar from "./components/nav.jsx";
 import Contact from "./components/contact/Contact.jsx";
-import Home from "./components/Project-Section/Page.jsx";
+import Product from "./components/Project-Section/Page.jsx";
 
 function App() {
   return (
@@ -15,12 +15,10 @@ function App() {
         <Navbar />
         <Hero />
         <About />
-
-        <Home />
+        <Product />
         <Testimonials />
         <Services />
         <Contact />
-
         <Footer />
       </Router>
     </>

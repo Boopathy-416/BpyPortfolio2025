@@ -46,7 +46,9 @@ export default function ProjectCard({ item }) {
   return (
     <div
       ref={cardRef}
-      className="group relative overflow-hidden rounded-lg bg-gradient-to-br from-gray-900/50 to-black/30 backdrop-blur-sm border border-white/10"
+      className="group relative overflow-hidden rounded-lg bg-gradient-to-br p-6 md:mr-8 from-gray-900/50
+       to-black/30 backdrop-blur-sm border border-white/70 shadow-lg hover:shadow-2xl shadow-green-600
+        transition-shadow duration-500 h-full flex flex-col"
       style={{
         transformStyle: "preserve-3d",
         perspective: "1000px",
@@ -56,7 +58,7 @@ export default function ProjectCard({ item }) {
       <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
       {/* Prism effect overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-white/5 opacity-30"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-[#8fff44] opacity-70"></div>
 
       <div className="relative p-6 z-10 h-full flex flex-col">
         <div className="mb-auto">
@@ -73,19 +75,19 @@ export default function ProjectCard({ item }) {
         </div>
 
         <div className="mt-4">
-          <div className="inline-block px-3 py-1 rounded-full bg-white/10 text-green-400 text-sm">
+          <div className="inline-block px-3 py-1 rounded-full bg-white/10 text-[#094b49] text-sm">
             {item.timeline}
           </div>
         </div>
       </div>
 
       {/* Background image with overlay */}
-      <div className="absolute inset-0 -z-10 opacity-20 group-hover:opacity-30 transition-opacity duration-500">
+      <div className="absolute inset-0 -z-10 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
         <img
           src={item.image || "/placeholder.svg"}
           alt={item.title}
-          className="object-contain w-full h-full"
-          style={{ objectFit: "cover" }}
+          className="object-cover w-full h-full"
+          style={{ objectFit: "contain" }}
         />
       </div>
 
