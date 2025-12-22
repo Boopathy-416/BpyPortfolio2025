@@ -64,10 +64,10 @@ export default function Footer() {
   return (
     <> 
     <footer
-      style={{ backgroundImage: "url('public/2025 Assets/footer.svg')" }}
-      className="relative  bg-black  w-full bg-center  bg-contain bg-no-repeat  px-4 py-5 md:px-8 lg:px-16">
+      // style={{ backgroundImage: "url('public/assets/venus.svg')" }}
+      className="relative  bg-[#000000] border-t-4 border-[#dd9716] w-full bg-center  bg-contain bg-no-repeat  px-4 py-2 md:px-8 lg:px-16">
       <div className="mx-auto max-w-8xl py-4   md:items-start md:justify-start   flex justify-center items-center">
-        <p className=" text-xs text-center text-white/60  uppercase font-semibold tracking-wider">
+        <p className=" text-xs text-center text-white  uppercase font-semibold tracking-wider">
           website by - Boopathy E
         </p>
       </div>
@@ -75,7 +75,7 @@ export default function Footer() {
           {[
             { href: "https://github.com/Boopathy-416", icon: Github },
             {
-              href: "https://www.linkedin.com/in/boopathy-e-666549282",
+              href: "https://www.linkedin.com/in/boopathy-e",
               icon: Linkedin,
             },
             { href: "https://figma.com/@yourprofile", icon: Figma },
@@ -100,7 +100,7 @@ export default function Footer() {
           >
             <Mail
               size={24}
-              className="cursor-pointer hover:shadow-red-600  hover:scale-110"
+              className="cursor-pointer hover:shadow-red-600  text-white hover:scale-110"
             />
             {showEmail && (
               <span className="absolute font-bold -top-8 px-2 py-1 -left-5 md:left-1/2 -translate-x-1/2 bg-white text-black text-xs  rounded-md shadow-xl shadow-black">
@@ -109,16 +109,16 @@ export default function Footer() {
             )}
           </div>
         </div>
-      <div className="mt-2 border-t border-black pt-4 text-center font-[PermanentMarker]">
-        <p className="text-gray-500 text-md">
+      <div className="mt-4 border-t border-white/40 pt-4 text-center font-[PermanentMarker]">
+        <p className="text-white text-md">
           © {new Date().getFullYear()} Boopathy-Portfolio. All rights reserved.
         </p>
-        <p className="text-gray-500 text-md">
-          <a href="/privacy-policy" className="hover:text-white">
+        <p className="text-white text-md">
+          <a href="/privacy-policy" className="hover:text-red-400">
             Privacy Policy
           </a>{" "}
           |{" "}
-          <a href="/terms-of-service" className="hover:text-white">
+          <a href="/terms-of-service" className="hover:text-red-400">
             Terms of Service
           </a>
         </p>-+
