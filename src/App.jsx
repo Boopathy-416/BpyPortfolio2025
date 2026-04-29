@@ -8,6 +8,7 @@ import Navbar from "./components/nav.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import Product from "./components/Project-Section/Page.jsx";
 import Navba from "./components/header.jsx";
+import Abouts from "./components/Project-Section/Profile.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Hero />
         <About />
         <Product />
+        <Abouts />
         <Testimonials />
         <Services />
         <Contact />

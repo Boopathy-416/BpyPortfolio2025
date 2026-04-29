@@ -153,10 +153,18 @@ export default function Contact() {
   };
 
   return (
-    <div
-      id="contact"
-      className="relative flex z-1 overflow-hidden flex-col md:flex-row w-full min-h-screen bg-black text-white"
-    >
+   <div
+  id="contact"
+  className="relative flex z-10 overflow-hidden flex-col md:flex-row w-full min-h-screen text-white"
+  style={{
+    backgroundColor: "black",
+    backgroundImage:
+      "url('https://cdn.prod.website-files.com/69b2406a34c003d51914de9e/69c3972bbcbac30b0f7558f7_Ellipse%2053.avif')",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "left ",
+    backgroundSize: "contain",
+  }}
+>
             <div className="absolute inset-0 pointer-events-none">
         {[...Array(50)].map((_, i) => (
           <div

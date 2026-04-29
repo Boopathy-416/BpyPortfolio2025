@@ -9,6 +9,7 @@ import {
   Code,
   BookOpen,
   Framer,
+  Phone,
 } from "lucide-react";
 import gsap from "gsap";
 import React from "react";
@@ -70,6 +71,17 @@ export default function Footer() {
         <p className=" text-xs text-center text-white  uppercase font-semibold tracking-wider">
           website by - Boopathy E
         </p>
+                <div className="flex items-center px-20 gap-10">
+          <img
+            src="public/assets/linkedin.png"
+            alt="profile"
+            className="w-10 h-10 rounded-sm object-cover"
+          />
+
+          <div className="bg-white text-black rounded-full p-2 cursor-pointer hover:scale-110 transition">
+            <Phone size={16} />
+          </div>
+        </div>
       </div>
         <div className="flex gap-4 text-center justify-center">
           {[

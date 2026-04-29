@@ -84,7 +84,7 @@ export default function ProjectCard({ item }) {
       {/* Background image with overlay */}
       <div className="absolute inset-0 -z-10 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
         <img
-          src={item.image || "/placeholder.svg"}
+          src={item.image || "https://cdn.prod.website-files.com/69b2406a34c003d51914de9e/69c3972bbcbac30b0f7558f7_Ellipse%2053.avif"}
           alt={item.title}
           className="object-cover w-full h-full"
           style={{ objectFit: "contain" }}
