@@ -7,12 +7,31 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const sections = [
-    { id: "hero", icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1766381582/Home_ngzayo.svg", size: 90 },
-    { id: "about", icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1766381463/About_fwuywb.svg", size: 90 },
-    { id: "testimonials", icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1766381465/Product_ijul0w.svg", size: 90 },
-    { id: "services", icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1766381463/solid_t1h2gm.svg", size: 90 },
-    { id: "contact", icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1766381463/Touch_nkzyy2.svg", size: 90 },
-
+    {
+      id: "hero",
+      icon: "public/assets/hom.svg",
+      size: 60,
+    },
+    {
+      id: "about",
+      icon: "public/assets/Abt.svg",
+      size: 70,
+    },
+    {
+      id: "testimonials",
+      icon: "public/assets/Prd.svg",
+      size: 80,
+    },
+    {
+      id: "services",
+      icon: "public/assets/sloi.svg",
+      size: 70,
+    },
+    {
+      id: "contact",
+      icon: "public/assets/toc.svg",
+      size: 60,
+    },
   ];
 
   useEffect(() => {
@@ -98,42 +117,41 @@ export default function Navbar() {
         })}
       </nav>
 
-{/* Mobile view Nav Menu */}
-{menuOpen && (
-  <div
-    className="fixed inset-0    z-40"
-    onClick={() => setMenuOpen(false)}
-  >
-    <div
-      className="grid grid-cols-1 bg-black/70 backdrop-blur-md  p-20 h-screen justify-center items-center "
-      onClick={(e) => e.stopPropagation()}
-    >
-      {sections.map((item) => (
-        <a
-          key={item.id}
-          href={`#${item.id}`}
+      {/* Mobile view Nav Menu */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0    z-40"
           onClick={() => setMenuOpen(false)}
-          className="flex items-center justify-center"
         >
-          <img
-            src={item.icon}
-            alt={item.id}
-            style={{
-              width: item.size,
-              height: item.size,
-            }}
-            className={`transition-none ${
-              activeSection === item.id
-                ? "grayscale-0"
-                : "grayscale brightness-75 contrast-125"
-            }`}
-          />
-        </a>
-      ))}
-    </div>
-  </div>
-)}
-
+          <div
+            className="grid grid-cols-1 bg-black/70 backdrop-blur-md  p-20 h-screen justify-center items-center "
+            onClick={(e) => e.stopPropagation()}
+          >
+            {sections.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center"
+              >
+                <img
+                  src={item.icon}
+                  alt={item.id}
+                  style={{
+                    width: item.size,
+                    height: item.size,
+                  }}
+                  className={`transition-none ${
+                    activeSection === item.id
+                      ? "grayscale-0"
+                      : "grayscale brightness-75 contrast-125"
+                  }`}
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </header>
   );
 }

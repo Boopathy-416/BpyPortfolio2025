@@ -22,11 +22,11 @@ export default function MarqueeTitle() {
     <div className="relative overflow-hidden w-full mt-10">
 
       {/* 🔥 Left Gradient Fade */}
-      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 z-10 
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-12 z-10 
       bg-gradient-to-r from-black via-black/80 to-transparent" />
 
       {/* 🔥 Right Gradient Fade */}
-      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10 
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-12 z-10 
       bg-gradient-to-l from-black via-black/80 to-transparent" />
 
       {/* 🔻 Marquee Track */}

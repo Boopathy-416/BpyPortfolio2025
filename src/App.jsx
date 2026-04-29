@@ -7,12 +7,14 @@ import Services from "./components/services.jsx";
 import Navbar from "./components/nav.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import Product from "./components/Project-Section/Page.jsx";
+import Navba from "./components/header.jsx";
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
+        {/* <Navba /> */}
         <Hero />
         <About />
         <Product />
