@@ -1,55 +1,132 @@
-*{
+* {
   box-sizing: border-box;
 }
-html, body {
+
+html,
+body {
   width: 100%;
-  overflow-x: hidden;  /* Prevents horizontal scroll */
+  overflow-x: hidden;
+  /* Prevents horizontal scroll */
   scroll-behavior: smooth;
-  touch-action: manipulation; /* Stops unwanted scrolling */
-  user-select: none; /* Prevents accidental text selection */
+  touch-action: manipulation;
+  /* Stops unwanted scrolling */
+  user-select: none;
+  /* Prevents accidental text selection */
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+
 @font-face {
-    font-family: 'Marlboro';
-    src: url('./assets/fonts/Marlboro.ttf') format('truetype');
-  }
-  
-  @font-face {
-    font-family: 'Marvel';
-    src: url('/assets/fonts/MarvelRegular-Dj83.ttf') format('truetype');
-  }
-  @font-face {
-    font-family: 'robo';
-    src: url('./assets/fonts/Bruce Forever.ttf') format('truetype');
-  }
-  @font-face {
-    font-family: 'kungfu';
-    src: url('/assets/fonts/KungFuMasterExpanded-X32x2.otf') format('truetype');
-  }
+  font-family: 'Marlboro';
+  src: url('/assets/fonts/Marlboro.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Marvel';
+  src: url('/assets/fonts/MarvelRegular-Dj83.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'robo';
+  src: url('/assets/fonts/BruceForever.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'kungfu';
+  src: url('/assets/fonts/KungFuMasterExpanded-X32x2.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'objectsans';
+  src: url('/assets/fonts/ObjectSans-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Akira';
+  src: url('/assets/fonts/AkiraExpandedDemo.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'PermanentMarker';
+  src: url('/assets/fonts/PermanentMarker.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'robot';
+  src: url('/assets/fonts/square_sans_serif_7.ttf') format('truetype');
+}
+
+/* Font Assemble */
+
+@font-face {
+  font-family: 'Sky';
+  src: url('/assets/fonts/Skyfont.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Airport';
+  src: url('/assets/fonts/Airport.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BadMofo';
+  src: url('/assets/fonts/BadMofo.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Karian';
+  src: url('/assets/fonts/karian.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Footer';
+  src: url('/assets/fonts/Footer.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Kleard';
+  src: url('/assets/fonts/Kleard.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Martin';
+  src: url('/assets/fonts/MartianSignpost-2R1W.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Navbar';
+  src: url('/assets/fonts/Navbar.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Osans';
+  src: url('/assets/fonts/ObjectSans-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Overseer';
+  src: url('/assets/fonts/OverseerBoldItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Fishing';
+  src: url('/assets/fonts/Fishing.ttf') format('truetype');
+}
 
 
 
-  @font-face {
-    font-family: 'objectsans';
-    src: url('/assets/fonts/ObjectSans-Regular.otf') format('truetype');
-  }
-  @font-face {
-    font-family: 'Akira';
-    src: url('/assets/fonts/Akira Expanded Demo.otf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'PermanentMarker';
-    src: url('../public/assets/fonts/PermanentMarker.ttf') format('truetype');
-  }
 
 
-  @font-face {
-    font-family: 'robot';
-    src: url('../public/assets/fonts/square_sans_serif_7.ttf') format('truetype');
-  }
+
+
+
+
+
+
+
+
+
 
 
 /* Mobile-only animation */
@@ -57,14 +134,15 @@ html, body {
   .animate-mobile-scroll {
     display: inline-flex;
     animation: scrollLeft 10s linear infinite;
-    white-space: nowrap; /* Prevent wrapping */
+    white-space: nowrap;
+    /* Prevent wrapping */
   }
 
-  .animate-mobile-scroll > a {
+  .animate-mobile-scroll>a {
     transition: transform 0.3s, box-shadow 0.3s;
   }
 
-  .animate-mobile-scroll > a:hover {
+  .animate-mobile-scroll>a:hover {
     transform: scale(1.1) rotateY(10deg);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   }
@@ -73,8 +151,42 @@ html, body {
 /* Disable the animation for larger screens */
 @media (min-width: 769px) {
   .animate-mobile-scroll {
-    animation: none; /* Disable animation on large screens */
+    animation: none;
+    /* Disable animation on large screens */
   }
 }
 
 
+
+
+
+.logo-enter {
+  /* animation: slideUpFade 1.5s ease-out forwards; */
+  animation: slideUpFade 5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slideUpFade {
+  0% {
+    transform: translate3d(0, 100px, 0) scale(0.95);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+
+.marquee-text {
+  font-size: clamp(3rem, 15vw, 8rem);
+  font-weight: 900;
+  line-height: 1;
+  padding: 4rem;
+  font-family: objectsans;
+
+  color: transparent;
+  -webkit-text-stroke: 6px black;
+
+  /* 🔥 smoother rendering */
+  will-change: transform;
+}

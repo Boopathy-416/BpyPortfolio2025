@@ -3,54 +3,65 @@ import { gsap } from "gsap";
 
 export default function MarqueeTitle() {
   const marqueeRef = useRef(null);
-  const blinkSound = useRef(null);
 
   useEffect(() => {
     const el = marqueeRef.current;
 
- 
-    gsap.fromTo(
-      el,
-      { xPercent: 100 },
-      {
-        xPercent: -100,
-        duration: 20,
-        ease: "sine.inOut",
-        repeat: -1,
-        force3D: true,
-      }
-    );
+    gsap.set(el, { xPercent: 0 });
+
+    gsap.to(el, {
+      xPercent: -50,
+      duration: 35, // 🔥 slower = premium
+      ease: "none",
+      repeat: -1,
+      force3D: true,
+    });
   }, []);
 
   return (
-    <div className="relative overflow-hidden w-full mt-10 mr-9">
-      {/* Marquee Wrapper */}
-      <div className="whitespace-nowrap will-change-transform">
-        <h1
-          ref={marqueeRef}
-          className="inline-block text-[clamp(3rem,15vw,8rem)]
-          rounded-md drop-shadow-sm bg-gradient-to-r
-          from-[#8f5f1f] via-[#ba8736] to-[#634101]
-          shadow-[0_10px_80px_rgba(186,135,54,0.45)]
-          border-[#503811] bg-no-repeat leading-none
-          font-black text-center"
-          style={{
-            padding: "4rem",
-            fontFamily: "objectsans",
-            color: "transparent",
-            WebkitTextStroke: "8px black",
-          }}
-        >
-          BPY CREATIONS &nbsp; BPY CREATIONS &nbsp; BPY CREATIONS BPY CREATIONS
-          &nbsp; BPY CREATIONS &nbsp;
-        </h1>
-      </div>
+    <div className="relative overflow-hidden w-full mt-10">
 
-      {/* Glow */}
-      <div className="absolute -right-1 top-0 w-24 h-44 bg-[#f2c46d] blur-[100px] " />
+      {/* 🔥 Left Gradient Fade */}
+      <div className="pointer-events-none absolute left-0 top-0 h-full w-32 z-10 
+      bg-gradient-to-r from-black via-black/80 to-transparent" />
+
+      {/* 🔥 Right Gradient Fade */}
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10 
+      bg-gradient-to-l from-black via-black/80 to-transparent" />
+
+      {/* 🔻 Marquee Track */}
+      <div
+        ref={marqueeRef}
+        className="flex whitespace-nowrap will-change-transform"
+      >
+        {/* 🔹 First Copy */}
+        <div className="flex">
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+        </div>
+
+        {/* 🔹 Duplicate Copy (IMPORTANT) */}
+        <div className="flex">
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+          <h1 className="marquee-text">BPY CREATIONS &nbsp;</h1>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+ {/* Glow */}
+      {/* <div className="absolute -right-1 top-0 w-24 h-44 bg-[#f2c36d] blur-[100px] " /> */}
 
       {/* Circular Text */}
-      <div className="absolute -right-2 top-0 w-32 h-32">
+      {/* <div className="absolute -right-2 top-0 w-32 h-32">
         {" "}
         <svg viewBox="0 0 100 100" className="w-full h-full rotate-[30deg]">
           {" "}
@@ -68,7 +79,4 @@ export default function MarqueeTitle() {
             </textPath>{" "}
           </text>{" "}
         </svg>{" "}
-      </div>
-    </div>
-  );
-}
+      </div> */}

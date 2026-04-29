@@ -55,7 +55,7 @@ export default function Navbar() {
         className="lg:hidden text-[#dd9716] opacity-70 z-50"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        {menuOpen ? <X size={38} /> : <Menu size={42} />}
+        {menuOpen ? <X size={38} /> : <Menu size={42}></Menu>}
       </button>
 
       {/* Desktop Planet Navigation */}

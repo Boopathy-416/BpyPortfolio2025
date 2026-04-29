@@ -1,25 +1,95 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import MarqueeTitle from "./Title";
+import { Linkedin } from "lucide-react";
+import UpdateCard from "../functionality/UpdatedCard";
+import gsap from "gsap";
 
 function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const items = ["UI/UX", "Branding", "Web development", "Logo Motion"];
+  
+
+
+ const ref = useRef(null);
+  const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth,
-        y: e.clientY / window.innerHeight,
-      });
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // 🔁 Reset animation
+          setAnimate(false);
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+          // small delay to restart animation
+          setTimeout(() => {
+            setAnimate(true);
+          }, 50);
+        }
+      },
+      { threshold: 0.6 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
   }, []);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ---------------------------
+  // const ref = useRef(null);
+  // const [visible, setVisible] = useState(false);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setVisible(true);
+  //       }
+  //     },
+  //     { threshold: 0.5 },
+  //   );
+
+  //   if (ref.current) observer.observe(ref.current);
+
+  //   return () => observer.disconnect();
+  // }, []);
+
+  // useEffect(() => {
+  //   const handleMouseMove = (e) => {
+  //     setMousePosition({
+  //       x: e.clientX / window.innerWidth,
+  //       y: e.clientY / window.innerHeight,
+  //     });
+  //   };
+
+  //   window.addEventListener("mousemove", handleMouseMove);
+  //   return () => window.removeEventListener("mousemove", handleMouseMove);
+  // }, []);
+// --------------------------------------------------
 
   return (
     <section id="hero">
-      <div className="relative bg-black bg-contain  bg-no-repeat min-h-screen w-full overflow-hidden ">
+      <div
+        className="relative min-h-screen bg-black/90 w-full overflow-hidden bg-no-repeat bg-cover"
+        style={{
+          backgroundImage:
+            "url('https://cdn.prod.website-files.com/69b2406a34c003d51914de9e/69b6469bf78a57a2245e61b7_Shap-1.avif')",
+          backgroundPosition: "center",
+        }}
+      >
         <div className="absolute inset-0 opacity-30">
           {[...Array(50)].map((_, i) => (
             <div
@@ -44,17 +114,79 @@ function Hero() {
           }}
         />
 
-        <main className="relative flex min-h-screen  flex-col-2 items-center justify-between  px-4">
-
-          <div className="flex items-center justify-center pl-6  pt-10">
-            <img
-              src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1765423407/ok_1_coin_fwkwh2.png"
-              alt="Bpy Creations"
-              className="w-[500px] h-auto shadow-[80px_10px_80px_rgba(186,135,54,0.45)]"
-            />
+        <main
+          ref={ref}
+          className="relative flex min-h-screen  flex-col-2 items-center justify-center  px-4"
+        >
+          {/* 🔻 Background Marquee (z-0) */}
+          <div className="absolute inset-0 z-0 flex items-center justify-center opacity-80 ">
+            <MarqueeTitle />
           </div>
 
-          {/* <div className="  flex flex-col items-center justify-center mt-10 mr-8 relative">
+
+      {/* 🔻 Gradient */}
+      <div className="absolute inset-0 z-20 pointer-events-none 
+      bg-[linear-gradient(180deg,rgba(0,0,0,1)_7%,rgba(0,0,0,0.38)_52%,rgba(0,0,0,1)_98%)]" />
+
+      {/* 🔺 Logo */}
+      <img
+        src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1765423407/ok_1_coin_fwkwh2.png"
+        alt="Bpy Creations"
+        className={`md:w-[500px] w-[250px] h-auto z-10 
+        ${animate ? "logo-enter" : "opacity-0"}`}
+      />
+
+
+
+
+
+
+
+
+
+          {/* <div
+            className="absolute inset-0 z-20 pointer-events-none 
+      bg-[linear-gradient(180deg,rgba(0,0,0,1)_7%,rgba(0,0,0,0.38)_52%,rgba(0,0,0,1)_98%)]"
+          />
+
+          <img
+            src="https://res.cloudinary.com/dpm3bum4n/image/upload/v1765423407/ok_1_coin_fwkwh2.png"
+            alt="Bpy Creations"
+            className={`md:w-[500px] w-[250px] h-auto z-10 ${
+              visible ? "logo-enter" : "opacity-0"
+            }`}        /> */}
+
+
+
+
+        </main>
+        <UpdateCard />
+
+        <style>{`
+  @keyframes twinkle {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+`}</style>
+      </div>
+    </section>
+  );
+}
+
+export default Hero;
+
+// bg-gradient-to-r
+//           from-[#8f5f1f] via-[#ba8736] to-[#634101]
+//           shadow-[0_10px_80px_rgba(186,135,54,0.45)]
+//           border-[#503811]
+
+{
+  /* <div className="  flex flex-col items-center justify-center mt-10 mr-8 relative">
             <h1
               className="text-[clamp(3rem,15vw,8rem)]   rounded-md drop-shadow-sm bg-gradient-to-r from-[#8f5f1f] via-[#ba8736] to-[#f2c46d]
             shadow-[0_10px_80px_rgba(186,135,54,0.45)] hidden md:block   border-[#503811]  bg-no-repeat leading-none font-black text-center"
@@ -95,40 +227,5 @@ function Hero() {
                
               </svg>
             </div>
-          </div> */}
-
-          <MarqueeTitle />
-
-          <div
-            className="absolute bottom-20 md:bottom-20 transition-all right-[42px]   max-w-xs rounded hover:text-black hover:bg-[#ececec] bg-black  text-white shadow-[0_10px_50px_rgba(255,255,255,0.5)] p-4"
-            style={{
-              transition: " ease-in 1s",
-            }}
-          >
-            <h2 className="text-xs md:text-sm font-bold">
-              Open to work | MERN Stack Developer | Graphics Designer |
-              Passionate about UI/UX | Let's connect!
-            </h2>
-            <p className="mt-2 text-xs  hover:text-white/80">
-              28.1.2025 last Updated
-            </p>
-          </div>
-        </main>
-
-        <style>{`
-  @keyframes twinkle {
-    0%,
-    100% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-`}</style>
-      </div>
-    </section>
-  );
+          </div> */
 }
-
-export default Hero;
