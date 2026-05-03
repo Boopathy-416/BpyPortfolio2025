@@ -9,27 +9,27 @@ export default function Navbar() {
   const sections = [
     {
       id: "hero",
-      icon: "public/assets/hom.svg",
+      icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1777795698/hom_ijla5n.svg",
       size: 60,
     },
     {
       id: "about",
-      icon: "public/assets/Abt.svg",
+      icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1777795698/Abt_kgbwez.svg",
       size: 70,
     },
     {
       id: "testimonials",
-      icon: "public/assets/Prd.svg",
+      icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1777795698/Prd_k0lida.svg",
       size: 80,
     },
     {
       id: "services",
-      icon: "public/assets/sloi.svg",
+      icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1777795698/sloi_hefmey.svg",
       size: 70,
     },
     {
       id: "contact",
-      icon: "public/assets/toc.svg",
+      icon: "https://res.cloudinary.com/dpm3bum4n/image/upload/v1777795698/toc_rlgplx.svg",
       size: 60,
     },
   ];

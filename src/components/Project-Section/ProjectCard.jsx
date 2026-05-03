@@ -14,7 +14,7 @@ export default function ProjectCard({ item }) {
     const tl = gsap.timeline({ paused: true });
 
     tl.to(card, {
-      scale: 1.05,
+      scale: 0.95,
       duration: 0.5,
       ease: "power2.out",
       boxShadow: "0 10px 30px rgba(0, 0, 0, 0.2)",
@@ -23,7 +23,7 @@ export default function ProjectCard({ item }) {
     tl.to(
       title,
       {
-        scale: 1.02,
+        scale: 0.98,
         y: -10,
         duration: 0.5,
         ease: "power2.out",
